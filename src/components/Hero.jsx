@@ -1,10 +1,28 @@
 import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef } from "react";
+import { useTypewriter } from "../hooks/useTypewriter";
 
 export default function Hero() {
-   const ref = useRef(null);
-   const { scrollYProgress } = useScroll({ target: ref, offset: ["start start", "end start"] });
-   const driftY = useTransform(scrollYProgress, [0, 1], [0, 80]);
+    const ref = useRef(null);
+    const { scrollYProgress } = useScroll({ target: ref, offset: ["start start", "end start"] });
+    const driftY = useTransform(scrollYProgress, [0, 1], [0, 80]);
+
+    // Smooth typewriter effect for job title with elegant timing
+    const animatedText = useTypewriter(
+      [
+        "Frontend Engneer",
+        "React Developer",
+        "JavaScript developer"
+      //   "Full Stack Developer",
+      //   "UI/UX Engineer"
+      ],
+      {
+        typingSpeed: 80,
+        deletingSpeed: 40,
+        delayBetweenTexts: 2500,
+        loop: true
+      }
+    );
 
    return (
      <section ref={ref} className="relative isolate min-h-[85vh] overflow-hidden">
@@ -147,12 +165,48 @@ export default function Hero() {
                Rehanul Haque
              </motion.span>
              <motion.span
-               className="block text-accent"
+               className="block text-accent relative"
                initial={{ opacity: 0, x: -20 }}
-               animate={{ opacity: 1, x: 0 }}
-               transition={{ delay: 0.4, duration: 0.6 }}
+               animate={{
+                 opacity: [0.8, 1, 0.9],
+                 x: 0,
+                 scale: [1, 1.01, 1],
+                 textShadow: [
+                   "0 0 0px rgba(124, 58, 237, 0)",
+                   "0 0 8px rgba(124, 58, 237, 0.2)",
+                   "0 0 0px rgba(124, 58, 237, 0)"
+                 ]
+               }}
+               transition={{
+                 delay: 0.4,
+                 duration: 0.8,
+                 opacity: {
+                   repeat: Infinity,
+                   duration: 4,
+                   ease: "easeInOut"
+                 },
+                 scale: {
+                   repeat: Infinity,
+                   duration: 3,
+                   ease: "easeInOut"
+                 },
+                 textShadow: {
+                   repeat: Infinity,
+                   duration: 3.5,
+                   ease: "easeInOut"
+                 }
+               }}
              >
-               Frontend Developer
+               {animatedText}
+               <motion.span
+                 className="inline-block w-0.5 h-[1em] bg-accent ml-1"
+                 animate={{ opacity: [0, 1, 0] }}
+                 transition={{
+                   duration: 1.2,
+                   repeat: Infinity,
+                   ease: "easeInOut"
+                 }}
+               />
              </motion.span>
              <motion.span
                className="block text-subtext text-xl md:text-2xl mt-2"
