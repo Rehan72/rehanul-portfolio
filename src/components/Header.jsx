@@ -20,7 +20,7 @@ export default function Header() {
   }, []);
 
   useMotionValueEvent(scrollY, "change", () => {
-    const sections = ["hero", "about", "skills", "experience", "projects", "contact"];
+    const sections = ["hero", "about", "skills", "experience", "timeline", "projects", "contact"];
     const current = sections.find(section => {
       const element = document.getElementById(section);
       if (element) {
@@ -36,6 +36,7 @@ export default function Header() {
     { href: "#about", label: "About" },
     { href: "#skills", label: "Skills" },
     { href: "#experience", label: "Experience" },
+    { href: "#timeline", label: "Career" },
     { href: "#projects", label: "Projects" },
     { href: "#contact", label: "Contact" }
   ];
@@ -105,6 +106,21 @@ export default function Header() {
 
          <div className="flex items-center gap-4">
            <ThemeToggle />
+
+           {/* Download Resume Button */}
+           <motion.a
+             href="/Rehanul_Resume.pdf"
+             download="Rehanul_Resume.pdf"
+             className="hidden md:flex items-center gap-2 px-4 py-2 rounded-lg border border-accent/20 text-accent hover:bg-accent/10 transition-all duration-300"
+             whileHover={{ scale: 1.05 }}
+             whileTap={{ scale: 0.95 }}
+             title="Download Resume"
+           >
+             <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+             </svg>
+             Resume
+           </motion.a>
 
            {/* Mobile menu button */}
            <motion.button
