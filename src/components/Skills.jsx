@@ -45,7 +45,7 @@ export default function Skills() {
         <p className="mt-2 text-subtext">Expertise across frontend development and network systems</p>
       </motion.div>
 
-      <div className="mt-8 grid gap-8 lg:grid-cols-2">
+      <div className="mt-8 grid gap-6 md:gap-8 md:grid-cols-2">
         {/* Skill Progress Bars */}
         <motion.div
           initial={{ opacity: 0, x: -20 }}
@@ -125,7 +125,7 @@ export default function Skills() {
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
         transition={{ duration: 0.6, delay: 0.4 }}
-        className="mt-8 grid gap-6 md:grid-cols-3"
+        className="mt-8 grid gap-4 sm:gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3"
       >
         <div className="card p-6">
           <h3 className="font-medium">Core Frontend</h3>

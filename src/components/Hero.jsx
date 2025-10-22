@@ -194,7 +194,7 @@ export default function Hero() {
            initial={{ opacity: 0, y: 16 }}
            animate={{ opacity: 1, y: 0 }}
            transition={{ delay: 1, duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
-           className="mt-10 flex flex-col sm:flex-row gap-4"
+           className="mt-10 flex flex-col sm:flex-row gap-4 flex-wrap justify-center sm:justify-start"
          >
            <motion.a
              href="#projects"

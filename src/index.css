@@ -312,3 +312,36 @@ html {
   transform: translateY(-8px) scale(1.02);
   box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
 }
+
+/* Mobile responsiveness improvements */
+@media (max-width: 640px) {
+  .container {
+    @apply px-4;
+  }
+
+  .section {
+    @apply py-12 md:py-20;
+  }
+
+  /* Reduce text sizes on mobile for better readability */
+  h1 { @apply text-2xl md:text-4xl lg:text-5xl; }
+  h2 { @apply text-xl md:text-2xl lg:text-3xl; }
+  h3 { @apply text-lg md:text-xl lg:text-2xl; }
+
+  /* Improve button spacing on mobile */
+  .btn-primary, .btn-secondary {
+    @apply px-6 py-3 text-sm;
+  }
+
+  /* Better mobile card spacing */
+  .card {
+    @apply p-4 md:p-6;
+  }
+}
+
+/* Tablet responsiveness improvements */
+@media (min-width: 641px) and (max-width: 1024px) {
+  .container {
+    @apply px-6;
+  }
+}

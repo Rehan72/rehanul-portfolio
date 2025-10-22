@@ -179,11 +179,11 @@ export default function Projects() {
 
         {/* Auto-sliding Carousel */}
         <div className="mt-8 relative">
-          <div className="flex justify-center items-stretch gap-6 md:gap-8 max-w-6xl mx-auto px-4" role="region" aria-label="Featured projects carousel">
+          <div className="flex justify-center items-stretch gap-4 md:gap-6 lg:gap-8 max-w-6xl mx-auto px-4" role="region" aria-label="Featured projects carousel">
             {getVisibleProjects().map((project, index) => (
               <motion.div
                 key={`${project.title}-${currentIndex}`}
-                className="w-full max-w-sm"
+                className="w-full max-w-xs sm:max-w-sm md:max-w-md"
                 initial={{ opacity: 0, y: 30 }}
                 animate={{
                   opacity: 1,

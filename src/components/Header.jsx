@@ -1,10 +1,11 @@
-import { motion, useScroll, useMotionValueEvent } from "framer-motion";
+import { motion, useScroll, useMotionValueEvent, AnimatePresence } from "framer-motion";
 import { useState, useEffect } from "react";
 import ThemeToggle from "./ThemeToggle.jsx";
 
 export default function Header() {
   const [activeSection, setActiveSection] = useState("");
   const [isDark, setIsDark] = useState(false);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const { scrollY } = useScroll();
 
   useEffect(() => {
@@ -127,17 +128,80 @@ export default function Header() {
              className="md:hidden p-2 rounded-lg border border-border hover:bg-card/50 transition-colors"
              whileHover={{ scale: 1.05, backgroundColor: "rgba(var(--card), 0.5)" }}
              whileTap={{ scale: 0.95 }}
+             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+             aria-label="Toggle mobile menu"
            >
              <motion.div
                className="w-5 h-0.5 bg-foreground mb-1"
-               animate={{ rotate: [0, 90] }}
+               animate={isMobileMenuOpen ? { rotate: 45, y: 6 } : { rotate: 0, y: 0 }}
                transition={{ duration: 0.2 }}
              />
-             <div className="w-5 h-0.5 bg-foreground mb-1" />
-             <div className="w-5 h-0.5 bg-foreground" />
+             <motion.div
+               className="w-5 h-0.5 bg-foreground mb-1"
+               animate={isMobileMenuOpen ? { opacity: 0 } : { opacity: 1 }}
+               transition={{ duration: 0.2 }}
+             />
+             <motion.div
+               className="w-5 h-0.5 bg-foreground"
+               animate={isMobileMenuOpen ? { rotate: -45, y: -6 } : { rotate: 0, y: 0 }}
+               transition={{ duration: 0.2 }}
+             />
            </motion.button>
          </div>
        </div>
+
+       {/* Mobile Navigation Menu */}
+       <AnimatePresence>
+         {isMobileMenuOpen && (
+           <motion.div
+             className="md:hidden absolute top-full left-0 right-0 bg-background/95 backdrop-blur-md border-b border-border/50"
+             initial={{ opacity: 0, height: 0 }}
+             animate={{ opacity: 1, height: "auto" }}
+             exit={{ opacity: 0, height: 0 }}
+             transition={{ duration: 0.3, ease: "easeInOut" }}
+           >
+             <div className="container py-4">
+               <nav className="flex flex-col gap-2">
+                 {navItems.map((item, index) => (
+                   <motion.a
+                     key={item.href}
+                     href={item.href}
+                     className={`px-4 py-3 rounded-lg transition-colors duration-300 ${
+                       activeSection === item.href.substring(1)
+                         ? "bg-accent/10 text-accent"
+                         : "text-muted-foreground hover:text-accent hover:bg-card/50"
+                     }`}
+                     initial={{ opacity: 0, x: -20 }}
+                     animate={{ opacity: 1, x: 0 }}
+                     transition={{ delay: index * 0.1, duration: 0.3 }}
+                     onClick={() => setIsMobileMenuOpen(false)}
+                   >
+                     {item.label}
+                   </motion.a>
+                 ))}
+
+                 {/* Mobile Resume Button */}
+                 <motion.a
+                   href="/Rehanul_Resume.pdf"
+                   download="Rehanul_Resume.pdf"
+                   className="mt-4 mx-4 px-4 py-3 rounded-lg border border-accent/20 text-accent hover:bg-accent/10 transition-all duration-300 text-center"
+                   initial={{ opacity: 0, y: 10 }}
+                   animate={{ opacity: 1, y: 0 }}
+                   transition={{ delay: navItems.length * 0.1, duration: 0.3 }}
+                   onClick={() => setIsMobileMenuOpen(false)}
+                 >
+                   <div className="flex items-center justify-center gap-2">
+                     <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                     </svg>
+                     Download Resume
+                   </div>
+                 </motion.a>
+               </nav>
+             </div>
+           </motion.div>
+         )}
+       </AnimatePresence>
      </motion.header>
    );
  }

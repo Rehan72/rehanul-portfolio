@@ -160,12 +160,13 @@ export default function Timeline() {
           </p>
           <motion.a
             href="#contact"
-            className="inline-flex items-center gap-2 px-6 py-3 bg-accent text-black font-medium rounded-full hover:shadow-lg transition-all duration-300"
+            className="inline-flex items-center gap-2 px-6 py-3 bg-accent font-medium rounded-full hover:shadow-lg transition-all duration-300"
+            style={{ color: 'white' }}
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
           >
             Get In Touch
-            <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <svg className="w-4 h-4" fill="none" stroke="white" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
             </svg>
           </motion.a>
