@@ -1,15 +1,24 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback, memo, useTransition } from "react";
 import { motion } from "framer-motion";
 import Section from "./Section.jsx";
 import ProjectModal from "./ProjectModal.jsx";
+import OptimizedImage from "./OptimizedImage.jsx";
 import { projects } from "../data/projects.js";
 import { useMemo } from "react";
 
-function ProjectCard({ project, onClick }) {
+const ProjectCard = memo(function ProjectCard({ project, onClick }) {
+  const handleClick = useCallback(() => onClick(project), [project, onClick]);
+  const handleKeyDown = useCallback((e) => {
+    if (e.key === 'Enter' || e.key === ' ') {
+      e.preventDefault();
+      onClick(project);
+    }
+  }, [project, onClick]);
+
   return (
     <motion.div
       className="group card overflow-hidden cursor-pointer h-full flex flex-col"
-      onClick={() => onClick(project)}
+      onClick={handleClick}
       whileHover={{
         y: -8,
         scale: 1.02,
@@ -17,20 +26,16 @@ function ProjectCard({ project, onClick }) {
       }}
       role="button"
       tabIndex={0}
-      aria-label={`View details for ${project.title} project`}
-      onKeyDown={(e) => {
-        if (e.key === 'Enter' || e.key === ' ') {
-          e.preventDefault();
-          onClick(project);
-        }
-      }}
+      aria-label={`View details for ${project.title} project. Technologies used: ${project.tags.join(', ')}`}
+      onKeyDown={handleKeyDown}
     >
       <div className="relative aspect-[16/10] overflow-hidden rounded-t-xl">
-        <motion.img
+        <OptimizedImage
           src={project.img}
-          alt={project.title}
+          alt={`${project.title} - ${project.desc}`}
           className="h-full w-full object-cover transition-transform duration-500"
-          whileHover={{ scale: 1.05 }}
+          width={400}
+          height={250}
         />
         <motion.div
           className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"
@@ -88,13 +93,16 @@ function ProjectCard({ project, onClick }) {
       </div>
     </motion.div>
   );
-}
+});
 
-export default function Projects() {
+export default memo(function Projects() {
   const [selectedProject, setSelectedProject] = useState(null);
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isAutoPlaying, setIsAutoPlaying] = useState(true);
   const [activeFilter, setActiveFilter] = useState('All');
+
+  // React 19.2: Using useTransition for non-urgent state updates
+  const [isPending, startTransition] = useTransition();
 
   // Get unique categories from projects
   const categories = useMemo(() => {
@@ -131,7 +139,10 @@ export default function Projects() {
   };
 
   const goToSlide = (index) => {
-    setCurrentIndex(index);
+    // React 19.2: Using startTransition for non-urgent updates
+    startTransition(() => {
+      setCurrentIndex(index);
+    });
   };
 
   const getVisibleProjects = () => {
@@ -152,13 +163,20 @@ export default function Projects() {
         viewport={{ once: true }}
         transition={{ duration: 0.6 }}
       >
-        <h2 className="text-2xl md:text-3xl font-bold">Featured Projects</h2>
-        <p className="mt-2 text-muted-foreground">
+        <h2 className="text-3xl md:text-4xl font-bold bg-gradient-to-r from-accent to-accent2 bg-clip-text text-transparent">Featured Projects</h2>
+        <p className="mt-3 text-muted-foreground text-lg">
           Selected work across EV charging operations, network engineering, and modern web development.
         </p>
+        <motion.div
+          className="w-24 h-1 bg-gradient-to-r from-accent to-accent2 rounded-full mt-4"
+          initial={{ width: 0 }}
+          whileInView={{ width: 96 }}
+          transition={{ duration: 0.8, delay: 0.3 }}
+          viewport={{ once: true }}
+        />
 
         {/* Filter Buttons */}
-        <div className="flex flex-wrap justify-center gap-2 mt-6" role="group" aria-label="Project filters">
+        <div className="flex flex-wrap justify-center gap-2 mt-6" role="group" aria-label="Project category filters">
           {categories.map((category) => (
             <motion.button
               key={category}
@@ -179,7 +197,7 @@ export default function Projects() {
 
         {/* Auto-sliding Carousel */}
         <div className="mt-8 relative">
-          <div className="flex justify-center items-stretch gap-4 md:gap-6 lg:gap-8 max-w-6xl mx-auto px-4" role="region" aria-label="Featured projects carousel">
+          <div className="flex justify-center items-stretch gap-4 md:gap-6 lg:gap-8 max-w-6xl mx-auto px-4" role="region" aria-label="Featured projects carousel" aria-live="polite">
             {getVisibleProjects().map((project, index) => (
               <motion.div
                 key={`${project.title}-${currentIndex}`}
@@ -295,4 +313,4 @@ export default function Projects() {
       />
     </Section>
   );
-}
+});

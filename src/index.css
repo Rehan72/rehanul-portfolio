@@ -255,6 +255,24 @@ html {
   100% { background-position: 200% 0; }
 }
 
+/* Dark mode enhancements */
+.dark .card {
+  background: linear-gradient(135deg, rgba(255,255,255,0.05), rgba(255,255,255,0.02));
+  border: 1px solid rgba(255,255,255,0.1);
+}
+
+.dark .glass {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.dark .loading-shimmer {
+  background: linear-gradient(90deg,
+    rgba(255,255,255,0) 0%,
+    rgba(255,255,255,0.1) 50%,
+    rgba(255,255,255,0) 100%);
+}
+
 /* Enhanced button styles */
 .btn-primary {
   @apply relative overflow-hidden;

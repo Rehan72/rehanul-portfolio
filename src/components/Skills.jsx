@@ -1,3 +1,4 @@
+import { memo } from "react";
 import Section from "./Section.jsx";
 import { motion } from "framer-motion";
 import AnimatedProgressBar from "./AnimatedProgressBar.jsx";
@@ -18,7 +19,7 @@ const skillLevels = [
   { name: "Testing", level: 75 }
 ];
 
-function Pill({ text, i }) {
+const Pill = memo(({ text, i }) => {
   return (
     <motion.span
       initial={{ opacity: 0, scale: 0.95, y: 8 }}
@@ -30,9 +31,10 @@ function Pill({ text, i }) {
       {text}
     </motion.span>
   );
-}
+});
 
-export default function Skills() {
+export default memo(function Skills() {
+
   return (
     <Section id="skills">
       <motion.div
@@ -41,35 +43,37 @@ export default function Skills() {
         viewport={{ once: true }}
         transition={{ duration: 0.6 }}
       >
-        <h2 className="text-2xl md:text-3xl">Skills & Tech</h2>
-        <p className="mt-2 text-subtext">Expertise across frontend development and network systems</p>
+        <h2 className="text-3xl md:text-4xl font-bold bg-gradient-to-r from-accent to-accent2 bg-clip-text text-transparent">Skills & Tech</h2>
+        <p className="mt-3 text-subtext text-lg">Expertise across frontend development and network systems</p>
+        <motion.div
+          className="w-24 h-1 bg-gradient-to-r from-accent to-accent2 rounded-full mt-4"
+          initial={{ width: 0 }}
+          whileInView={{ width: 96 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8, delay: 0.3 }}
+        />
       </motion.div>
 
-      <div className="mt-8 grid gap-6 md:gap-8 md:grid-cols-2">
+      <div className="mt-12 grid gap-8 md:gap-10 md:grid-cols-2">
         {/* Skill Progress Bars */}
         <motion.div
           initial={{ opacity: 0, x: -20 }}
           whileInView={{ opacity: 1, x: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6, delay: 0.2 }}
-          className="card p-6"
+          className="card p-8 bg-gradient-to-br from-card to-card/80 border border-white/10 hover:border-accent/20 transition-all duration-300"
         >
-          <h3 className="font-medium mb-6 flex items-center gap-2">
-            Technical Proficiency
+          <h3 className="text-xl font-bold mb-8 flex items-center gap-3">
             <motion.div
-              animate={{
-                rotate: [0, 5, -5, 0],
-                transition: {
-                  duration: 2,
-                  repeat: Infinity,
-                  ease: "easeInOut"
-                }
-              }}
+              className="w-10 h-10 bg-gradient-to-br from-accent to-accent2 rounded-lg flex items-center justify-center shadow-lg"
+              whileHover={{ rotate: 360 }}
+              transition={{ duration: 0.6 }}
             >
-              ⚡
+              <span className="text-white font-bold text-lg">⚡</span>
             </motion.div>
+            Technical Proficiency
           </h3>
-          <div className="space-y-4">
+          <div className="space-y-5">
             {skillLevels.map((skill, index) => (
               <AnimatedProgressBar
                 key={skill.name}
@@ -87,34 +91,57 @@ export default function Skills() {
           whileInView={{ opacity: 1, x: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6, delay: 0.3 }}
-          className="card p-6"
+          className="card p-8 bg-gradient-to-br from-card to-card/80 border border-white/10 hover:border-accent2/20 transition-all duration-300"
         >
-          <h3 className="font-medium mb-6">Experience Overview</h3>
-          <div className="grid grid-cols-2 gap-6">
-            <div className="text-center">
-              <div className="text-3xl font-bold text-accent mb-2">
+          <div className="mb-8">
+            <h3 className="text-xl font-bold flex items-center gap-3">
+              <motion.div
+                className="w-10 h-10 bg-gradient-to-br from-accent2 to-accent rounded-lg flex items-center justify-center shadow-lg"
+                whileHover={{ rotate: 360 }}
+                transition={{ duration: 0.6 }}
+              >
+                <span className="text-white font-bold text-lg">📊</span>
+              </motion.div>
+              Experience Overview
+            </h3>
+          </div>
+          <div className="grid grid-cols-2 gap-8">
+            <motion.div
+              className="text-center p-4 rounded-lg bg-accent/5 border border-accent/20 hover:bg-accent/10 transition-all duration-300"
+              whileHover={{ scale: 1.05, y: -2 }}
+            >
+              <div className="text-4xl font-bold text-accent mb-3">
                 <AnimatedCounter endValue={3.5} suffix="+" />
               </div>
-              <div className="text-sm text-subtext">Years Frontend</div>
-            </div>
-            <div className="text-center">
-              <div className="text-3xl font-bold text-accent mb-2">
+              <div className="text-sm text-subtext font-medium">Years Frontend</div>
+            </motion.div>
+            <motion.div
+              className="text-center p-4 rounded-lg bg-accent2/5 border border-accent2/20 hover:bg-accent2/10 transition-all duration-300"
+              whileHover={{ scale: 1.05, y: -2 }}
+            >
+              <div className="text-4xl font-bold text-accent2 mb-3">
                 <AnimatedCounter endValue={2.5} suffix="+" />
               </div>
-              <div className="text-sm text-subtext">Years Network</div>
-            </div>
-            <div className="text-center">
-              <div className="text-3xl font-bold text-accent mb-2">
+              <div className="text-sm text-subtext font-medium">Years Network</div>
+            </motion.div>
+            <motion.div
+              className="text-center p-4 rounded-lg bg-green-500/5 border border-green-500/20 hover:bg-green-500/10 transition-all duration-300"
+              whileHover={{ scale: 1.05, y: -2 }}
+            >
+              <div className="text-4xl font-bold text-green-500 mb-3">
                 <AnimatedCounter endValue={15} suffix="+" />
               </div>
-              <div className="text-sm text-subtext">Projects</div>
-            </div>
-            <div className="text-center">
-              <div className="text-3xl font-bold text-accent mb-2">
+              <div className="text-sm text-subtext font-medium">Projects</div>
+            </motion.div>
+            <motion.div
+              className="text-center p-4 rounded-lg bg-purple-500/5 border border-purple-500/20 hover:bg-purple-500/10 transition-all duration-300"
+              whileHover={{ scale: 1.05, y: -2 }}
+            >
+              <div className="text-4xl font-bold text-purple-500 mb-3">
                 <AnimatedCounter endValue={99} suffix="%" />
               </div>
-              <div className="text-sm text-subtext">Uptime Focus</div>
-            </div>
+              <div className="text-sm text-subtext font-medium">Uptime Focus</div>
+            </motion.div>
           </div>
         </motion.div>
       </div>
@@ -125,27 +152,63 @@ export default function Skills() {
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
         transition={{ duration: 0.6, delay: 0.4 }}
-        className="mt-8 grid gap-4 sm:gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3"
+        className="mt-12 grid gap-6 sm:gap-8 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3"
       >
-        <div className="card p-6">
-          <h3 className="font-medium">Core Frontend</h3>
-          <div className="mt-4 flex flex-wrap gap-2">
+        <motion.div
+          className="card p-8 bg-gradient-to-br from-card to-card/80 border border-white/10 hover:border-accent/20 transition-all duration-300 group"
+          whileHover={{ scale: 1.02, y: -5 }}
+        >
+          <h3 className="text-lg font-bold mb-6 flex items-center gap-3">
+            <motion.div
+              className="w-8 h-8 bg-gradient-to-br from-accent to-accent2 rounded-lg flex items-center justify-center"
+              whileHover={{ rotate: 360 }}
+              transition={{ duration: 0.6 }}
+            >
+              <span className="text-white text-sm">⚛️</span>
+            </motion.div>
+            Core Frontend
+          </h3>
+          <div className="flex flex-wrap gap-3">
             {core.map((s, i) => <Pill key={s} text={s} i={i} />)}
           </div>
-        </div>
-        <div className="card p-6">
-          <h3 className="font-medium">Tooling</h3>
-          <div className="mt-4 flex flex-wrap gap-2">
+        </motion.div>
+        <motion.div
+          className="card p-8 bg-gradient-to-br from-card to-card/80 border border-white/10 hover:border-accent2/20 transition-all duration-300 group"
+          whileHover={{ scale: 1.02, y: -5 }}
+        >
+          <h3 className="text-lg font-bold mb-6 flex items-center gap-3">
+            <motion.div
+              className="w-8 h-8 bg-gradient-to-br from-accent2 to-accent rounded-lg flex items-center justify-center"
+              whileHover={{ rotate: 360 }}
+              transition={{ duration: 0.6 }}
+            >
+              <span className="text-white text-sm">🛠️</span>
+            </motion.div>
+            Tooling
+          </h3>
+          <div className="flex flex-wrap gap-3">
             {tooling.map((s, i) => <Pill key={s} text={s} i={i} />)}
           </div>
-        </div>
-        <div className="card p-6">
-          <h3 className="font-medium">Networking & Systems</h3>
-          <div className="mt-4 flex flex-wrap gap-2">
+        </motion.div>
+        <motion.div
+          className="card p-8 bg-gradient-to-br from-card to-card/80 border border-white/10 hover:border-green-500/20 transition-all duration-300 group sm:col-span-2 lg:col-span-1"
+          whileHover={{ scale: 1.02, y: -5 }}
+        >
+          <h3 className="text-lg font-bold mb-6 flex items-center gap-3">
+            <motion.div
+              className="w-8 h-8 bg-gradient-to-br from-green-500 to-accent rounded-lg flex items-center justify-center"
+              whileHover={{ rotate: 360 }}
+              transition={{ duration: 0.6 }}
+            >
+              <span className="text-white text-sm">🌐</span>
+            </motion.div>
+            Networking & Systems
+          </h3>
+          <div className="flex flex-wrap gap-3">
             {networking.map((s, i) => <Pill key={s} text={s} i={i} />)}
           </div>
-        </div>
+        </motion.div>
       </motion.div>
     </Section>
   );
-}
+});

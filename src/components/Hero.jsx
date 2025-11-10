@@ -1,103 +1,64 @@
-import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef } from "react";
+import { motion } from "framer-motion";
 import { useTypewriter } from "../hooks/useTypewriter";
 
 export default function Hero() {
     const ref = useRef(null);
-    const { scrollYProgress } = useScroll({ target: ref, offset: ["start start", "end start"] });
-    const driftY = useTransform(scrollYProgress, [0, 1], [0, 80]);
 
-    // Smooth typewriter effect for job title with elegant timing
+    // Optimized typewriter effect
     const animatedText = useTypewriter(
       [
-        "Frontend Engneer",
+        "Frontend Engineer",
         "React Developer",
-        "JavaScript developer"
-      //   "Full Stack Developer",
-      //   "UI/UX Engineer"
+        "JavaScript Developer",
+        "EV Charging Specialist",
+        "UI/UX Developer"
       ],
       {
-        typingSpeed: 80,
-        deletingSpeed: 40,
-        delayBetweenTexts: 2500,
+        typingSpeed: 100, // Slightly faster for better UX
+        deletingSpeed: 50,
+        delayBetweenTexts: 3000, // Longer delay to reduce CPU usage
         loop: true
       }
     );
 
    return (
      <section ref={ref} className="relative isolate min-h-[85vh] overflow-hidden">
-       {/* Animated background grid */}
-       <motion.div
+       {/* Static background grid for better performance */}
+       <div
          className="absolute inset-0 opacity-40"
-         animate={{
-           backgroundPosition: ["0px 0px", "50px 50px"],
-         }}
-         transition={{
-           duration: 20,
-           repeat: Infinity,
-           repeatType: "reverse",
-           ease: "linear"
-         }}
          style={{
            backgroundImage: `radial-gradient(circle at 1px 1px, rgba(255,255,255,0.3) 1px, transparent 0)`,
            backgroundSize: '50px 50px'
          }}
        />
 
-       {/* Animated gradient orbs */}
-       <motion.div style={{ y: driftY }} className="absolute -inset-40 -z-10" aria-hidden>
-         <motion.div
+       {/* Static gradient orbs for better performance */}
+       <div className="absolute -inset-40 -z-10" aria-hidden>
+         <div
            className="absolute inset-0"
-           animate={{
-             background: [
-               "radial-gradient(ellipse_at_top,_rgba(122,224,255,0.14),_transparent_60%)",
-               "radial-gradient(ellipse_at_top,_rgba(87,255,167,0.12),_transparent_60%)",
-               "radial-gradient(ellipse_at_top,_rgba(122,224,255,0.14),_transparent_60%)"
-             ]
-           }}
-           transition={{
-             duration: 8,
-             repeat: Infinity,
-             ease: "easeInOut"
+           style={{
+             background: "radial-gradient(ellipse_at_top,_rgba(122,224,255,0.14),_transparent_60%)"
            }}
          />
-         <motion.div
+         <div
            className="absolute inset-0"
-           animate={{
-             background: [
-               "radial-gradient(ellipse_at_bottom,_rgba(87,255,167,0.12),_transparent_60%)",
-               "radial-gradient(ellipse_at_bottom,_rgba(122,224,255,0.14),_transparent_60%)",
-               "radial-gradient(ellipse_at_bottom,_rgba(87,255,167,0.12),_transparent_60%)"
-             ]
-           }}
-           transition={{
-             duration: 10,
-             repeat: Infinity,
-             ease: "easeInOut"
+           style={{
+             background: "radial-gradient(ellipse_at_bottom,_rgba(87,255,167,0.12),_transparent_60%)"
            }}
          />
-       </motion.div>
+       </div>
 
-       {/* Floating particles */}
+       {/* Static floating particles for better performance */}
        <div className="absolute inset-0 overflow-hidden">
          {[...Array(6)].map((_, i) => (
-           <motion.div
+           <div
              key={i}
              className="absolute w-2 h-2 bg-accent/30 rounded-full"
              style={{
                left: `${20 + i * 15}%`,
                top: `${10 + i * 10}%`,
-             }}
-             animate={{
-               y: [0, -30, 0],
-               opacity: [0.3, 1, 0.3],
-               scale: [1, 1.2, 1],
-             }}
-             transition={{
-               duration: 3 + i * 0.5,
-               repeat: Infinity,
-               delay: i * 0.2,
-               ease: "easeInOut"
+               opacity: 0.5
              }}
            />
          ))}
@@ -116,37 +77,20 @@ export default function Hero() {
              whileHover={{ scale: 1.05 }}
              transition={{ duration: 0.3 }}
            >
-             <motion.div
-               className="w-32 h-32 md:w-40 md:h-40 rounded-full object-cover border-4 border-accent/30 shadow-2xl overflow-hidden"
-               animate={{
-                 boxShadow: [
-                   "0 0 0 rgba(124, 58, 237, 0.3)",
-                   "0 0 30px rgba(124, 58, 237, 0.4)",
-                   "0 0 0 rgba(124, 58, 237, 0.3)"
-                 ]
+             <img
+               src="/profile.jpg"
+               alt="Rehanul Haque - Frontend Developer and EV Charging Specialist"
+               className="w-32 h-32 md:w-40 md:h-40 rounded-full object-cover border-4 border-accent/30 shadow-2xl"
+               loading="eager"
+               decoding="async"
+               onError={(e) => {
+                 console.error('Image failed to load:', e);
+                 e.target.style.display = 'none';
                }}
-               transition={{
-                 duration: 3,
-                 repeat: Infinity,
-                 ease: "easeInOut"
-               }}
-             >
-               <img
-                 src="/profile.jpg"
-                 alt="Rehanul Haque"
-                 className="w-full h-full object-cover"
-               />
-             </motion.div>
-             <motion.div
-               className="absolute inset-0 rounded-full bg-gradient-to-tr from-accent/20 to-transparent"
-               animate={{
-                 opacity: [0.3, 0.6, 0.3]
-               }}
-               transition={{
-                 duration: 2,
-                 repeat: Infinity,
-                 ease: "easeInOut"
-               }}
+               onLoad={() => console.log('Image loaded successfully')}
+             />
+             <div
+               className="absolute inset-0 rounded-full bg-gradient-to-tr from-accent/20 to-transparent opacity-0.4"
              />
            </motion.div>
          </motion.div>
@@ -223,25 +167,25 @@ export default function Hero() {
            initial={{ opacity: 0, y: 16 }}
            animate={{ opacity: 1, y: 0 }}
            transition={{ delay: 0.8, duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
-           className="mt-6 max-w-2xl text-subtext text-lg"
+           className="mt-6 max-w-2xl text-subtext text-lg leading-relaxed"
          >
-           Building fast, reliable, and maintainable interfaces with a strong foundation in networking.
+           Crafting exceptional digital experiences with modern web technologies and deep expertise in EV charging systems.
            <motion.span
-             className="text-accent"
+             className="text-accent font-semibold"
              animate={{ opacity: [0.7, 1, 0.7] }}
              transition={{ duration: 2, repeat: Infinity }}
            >
-             3.5 years in frontend
+             3.5+ years in frontend development
            </motion.span>{" "}
-           plus{" "}
+           combined with{" "}
            <motion.span
-             className="text-accent"
+             className="text-accent font-semibold"
              animate={{ opacity: [0.7, 1, 0.7] }}
              transition={{ duration: 2, repeat: Infinity, delay: 0.5 }}
            >
-             2.5 years as a Network Engineer
+             2.5+ years as a Network Engineer
            </motion.span>{" "}
-           ensures robust UI architecture, performance optimization, and resilient API communication.
+           delivering scalable solutions, optimized performance, and seamless user experiences.
          </motion.p>
 
          <motion.div
@@ -252,16 +196,16 @@ export default function Hero() {
          >
            <motion.a
              href="#projects"
-             className="inline-flex items-center gap-2 rounded-full bg-accent px-8 py-4 font-medium text-black shadow-lg hover:shadow-xl transition-all duration-300"
+             className="inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-accent to-accent2 px-8 py-4 font-semibold text-black shadow-lg hover:shadow-xl transition-all duration-300"
              whileHover={{
                scale: 1.05,
-               boxShadow: "0 10px 30px rgba(124, 58, 237, 0.4)"
+               boxShadow: "0 15px 35px rgba(87, 255, 167, 0.4)"
              }}
              whileTap={{ scale: 0.95 }}
              aria-label="View my featured projects section"
            >
              <motion.span
-             className="text-black"
+               className="text-black"
                animate={{ x: [0, 5, 0] }}
                transition={{ duration: 1.5, repeat: Infinity }}
              >
@@ -279,11 +223,11 @@ export default function Hero() {
              href="https://github.com/Rehan72"
              target="_blank"
              rel="noopener noreferrer"
-             className="inline-flex items-center gap-2 rounded-full border border-white/20 px-8 py-4 font-medium text-white hover:bg-white/5 transition-all duration-300"
+             className="inline-flex items-center gap-2 rounded-full border-2 border-white/30 px-8 py-4 font-medium text-white hover:bg-white/10 hover:border-accent/60 transition-all duration-300 backdrop-blur-sm"
              whileHover={{
                scale: 1.05,
-               borderColor: "rgba(124, 58, 237, 0.5)",
-               backgroundColor: "rgba(124, 58, 237, 0.1)"
+               borderColor: "rgba(87, 255, 167, 0.6)",
+               backgroundColor: "rgba(87, 255, 167, 0.1)"
              }}
              whileTap={{ scale: 0.95 }}
              aria-label="Visit my GitHub profile"
@@ -297,11 +241,11 @@ export default function Hero() {
            <motion.a
              href="/Rehanul_Resume.pdf"
              download="Rehanul_Resume.pdf"
-             className="inline-flex items-center gap-2 rounded-full border border-white/20 px-8 py-4 font-medium text-white hover:bg-white/5 transition-all duration-300"
+             className="inline-flex items-center gap-2 rounded-full border-2 border-white/30 px-8 py-4 font-medium text-white hover:bg-white/10 hover:border-accent2/60 transition-all duration-300 backdrop-blur-sm"
              whileHover={{
                scale: 1.05,
-               borderColor: "rgba(124, 58, 237, 0.5)",
-               backgroundColor: "rgba(124, 58, 237, 0.1)"
+               borderColor: "rgba(122, 224, 255, 0.6)",
+               backgroundColor: "rgba(122, 224, 255, 0.1)"
              }}
              whileTap={{ scale: 0.95 }}
            >
@@ -313,11 +257,11 @@ export default function Hero() {
 
            <motion.a
              href="#contact"
-             className="inline-flex items-center gap-2 rounded-full border border-white/20 px-8 py-4 font-medium text-white hover:bg-white/5 transition-all duration-300"
+             className="inline-flex items-center gap-2 rounded-full border-2 border-white/30 px-8 py-4 font-medium text-white hover:bg-white/10 hover:border-accent/60 transition-all duration-300 backdrop-blur-sm"
              whileHover={{
                scale: 1.05,
-               borderColor: "rgba(124, 58, 237, 0.5)",
-               backgroundColor: "rgba(124, 58, 237, 0.1)"
+               borderColor: "rgba(87, 255, 167, 0.6)",
+               backgroundColor: "rgba(87, 255, 167, 0.1)"
              }}
              whileTap={{ scale: 0.95 }}
              aria-label="Navigate to contact section"

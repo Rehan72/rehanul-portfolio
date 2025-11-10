@@ -1,12 +1,14 @@
 import { motion, useScroll, useMotionValueEvent, AnimatePresence } from "framer-motion";
 import { useState, useEffect } from "react";
 import ThemeToggle from "./ThemeToggle.jsx";
+import { useAccessibility } from "../hooks/useAccessibility.js";
 
 export default function Header() {
   const [activeSection, setActiveSection] = useState("");
   const [isDark, setIsDark] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const { scrollY } = useScroll();
+  const { prefersReducedMotion } = useAccessibility();
 
   useEffect(() => {
     const updateTheme = () => {
@@ -48,9 +50,9 @@ export default function Header() {
       style={{
         background: `rgba(${isDark ? '8, 10, 12' : '248, 250, 252'}, ${Math.min(scrollY.get() / 100, 0.8)})`,
       }}
-      initial={{ y: -100 }}
+      initial={prefersReducedMotion ? { y: 0 } : { y: -100 }}
       animate={{ y: 0 }}
-      transition={{ duration: 0.6 }}
+      transition={prefersReducedMotion ? { duration: 0 } : { duration: 0.6 }}
     >
        <div className="container flex items-center justify-between py-6 md:py-8">
          <motion.a
@@ -106,7 +108,13 @@ export default function Header() {
          </nav>
 
          <div className="flex items-center gap-4">
-           <ThemeToggle />
+           <motion.div
+             initial={{ opacity: 0, scale: 0.8 }}
+             animate={{ opacity: 1, scale: 1 }}
+             transition={{ delay: 0.5, duration: 0.3 }}
+           >
+             <ThemeToggle />
+           </motion.div>
 
            {/* Download Resume Button */}
            <motion.a

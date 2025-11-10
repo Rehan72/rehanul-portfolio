@@ -92,11 +92,18 @@ export default function Testimonials() {
 
   return (
     <Section id="testimonials">
-      <div className="text-center mb-12">
-        <h2 className="text-2xl md:text-3xl font-bold mb-4">Client Testimonials</h2>
-        <p className="text-muted-foreground max-w-2xl mx-auto">
+      <div className="text-center mb-16">
+        <h2 className="text-3xl md:text-4xl font-bold mb-4 bg-gradient-to-r from-accent to-accent2 bg-clip-text text-transparent">Client Testimonials</h2>
+        <p className="text-muted-foreground max-w-2xl mx-auto text-lg">
           What clients and colleagues say about working with me on their projects.
         </p>
+        <motion.div
+          className="w-24 h-1 bg-gradient-to-r from-accent to-accent2 rounded-full mx-auto mt-6"
+          initial={{ width: 0 }}
+          whileInView={{ width: 96 }}
+          transition={{ duration: 0.8, delay: 0.3 }}
+          viewport={{ once: true }}
+        />
       </div>
 
       {/* Testimonials Carousel */}
