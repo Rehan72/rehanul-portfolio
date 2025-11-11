@@ -10,7 +10,7 @@ const PerformanceMonitor = memo(() => {
   // Only show in development or when explicitly enabled
   useEffect(() => {
     const showMonitor = localStorage.getItem('show-performance-monitor') === 'true' ||
-                       process.env.NODE_ENV === 'development';
+                        import.meta.env.DEV;
 
     if (showMonitor) {
       setIsVisible(true);

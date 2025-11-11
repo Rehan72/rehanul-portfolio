@@ -77,18 +77,22 @@ export default function Hero() {
              whileHover={{ scale: 1.05 }}
              transition={{ duration: 0.3 }}
            >
-             <img
-               src="/profile.jpg"
-               alt="Rehanul Haque - Frontend Developer and EV Charging Specialist"
-               className="w-32 h-32 md:w-40 md:h-40 rounded-full object-cover border-4 border-accent/30 shadow-2xl"
-               loading="eager"
-               decoding="async"
-               onError={(e) => {
-                 console.error('Image failed to load:', e);
-                 e.target.style.display = 'none';
-               }}
-               onLoad={() => console.log('Image loaded successfully')}
-             />
+             <div className="w-32 h-32 md:w-40 md:h-40 rounded-full border-4 border-accent/30 shadow-2xl overflow-hidden">
+               <img
+                 src="/profile.jpg"
+                 alt="Rehanul Haque - Frontend Developer and EV Charging Specialist"
+                 className="w-full h-full object-cover"
+                 loading="eager"
+                 decoding="async"
+                 width="160"
+                 height="160"
+                 onError={(e) => {
+                   console.error('Image failed to load:', e);
+                   e.target.style.display = 'none';
+                 }}
+                 onLoad={() => console.log('Image loaded successfully')}
+               />
+             </div>
              <div
                className="absolute inset-0 rounded-full bg-gradient-to-tr from-accent/20 to-transparent opacity-0.4"
              />
@@ -100,7 +104,7 @@ export default function Hero() {
            animate={{ opacity: 1, y: 0 }}
            transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
          >
-           <motion.h1 className="text-3xl font-semibold md:text-6xl">
+           <motion.h1 className="hero-title font-semibold md:text-6xl">
              <motion.span
                initial={{ opacity: 0 }}
                animate={{ opacity: 1 }}
@@ -142,24 +146,35 @@ export default function Hero() {
                }}
              >
                {animatedText}
-               <motion.span
-                 className="inline-block w-0.5 h-[1em] bg-accent ml-1"
-                 animate={{ opacity: [0, 1, 0] }}
-                 transition={{
-                   duration: 1.2,
-                   repeat: Infinity,
-                   ease: "easeInOut"
-                 }}
-               />
+               <span className="inline-block w-0.5 h-[1em] bg-accent ml-1 animate-pulse" />
              </motion.span>
              <motion.span
-               className="block text-subtext text-xl md:text-2xl mt-2"
+               className="block text-subtext hero-subtitle mt-2"
                initial={{ opacity: 0, y: 10 }}
                animate={{ opacity: 1, y: 0 }}
                transition={{ delay: 0.6, duration: 0.6 }}
              >
                EV Charging Domain Expert
              </motion.span>
+             <motion.div
+               className="flex flex-wrap gap-4 mt-4 text-sm"
+               initial={{ opacity: 0, y: 10 }}
+               animate={{ opacity: 1, y: 0 }}
+               transition={{ delay: 0.7, duration: 0.6 }}
+             >
+               <a href="mailto:syed.rehanhaque1994@gmail.com" className="text-accent hover:underline flex items-center gap-1">
+                 <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                 </svg>
+                 syed.rehanhaque1994@gmail.com
+               </a>
+               <a href="tel:+917277826285" className="text-accent hover:underline flex items-center gap-1">
+                 <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+                 </svg>
+                 +91 72778 26285
+               </a>
+             </motion.div>
            </motion.h1>
          </motion.div>
 
@@ -170,21 +185,13 @@ export default function Hero() {
            className="mt-6 max-w-2xl text-subtext text-lg leading-relaxed"
          >
            Crafting exceptional digital experiences with modern web technologies and deep expertise in EV charging systems.
-           <motion.span
-             className="text-accent font-semibold"
-             animate={{ opacity: [0.7, 1, 0.7] }}
-             transition={{ duration: 2, repeat: Infinity }}
-           >
+           <span className="text-accent font-semibold animate-pulse">
              3.5+ years in frontend development
-           </motion.span>{" "}
+           </span>{" "}
            combined with{" "}
-           <motion.span
-             className="text-accent font-semibold"
-             animate={{ opacity: [0.7, 1, 0.7] }}
-             transition={{ duration: 2, repeat: Infinity, delay: 0.5 }}
-           >
+           <span className="text-accent font-semibold animate-pulse" style={{ animationDelay: '0.5s' }}>
              2.5+ years as a Network Engineer
-           </motion.span>{" "}
+           </span>{" "}
            delivering scalable solutions, optimized performance, and seamless user experiences.
          </motion.p>
 
@@ -196,7 +203,7 @@ export default function Hero() {
          >
            <motion.a
              href="#projects"
-             className="inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-accent to-accent2 px-8 py-4 font-semibold text-black shadow-lg hover:shadow-xl transition-all duration-300"
+             className="hero-button inline-flex items-center gap-2 rounded-full bg-gradient-to-r from-accent to-accent2 font-semibold text-black shadow-lg hover:shadow-xl transition-all duration-300"
              whileHover={{
                scale: 1.05,
                boxShadow: "0 15px 35px rgba(87, 255, 167, 0.4)"
@@ -223,7 +230,7 @@ export default function Hero() {
              href="https://github.com/Rehan72"
              target="_blank"
              rel="noopener noreferrer"
-             className="inline-flex items-center gap-2 rounded-full border-2 border-white/30 px-8 py-4 font-medium text-white hover:bg-white/10 hover:border-accent/60 transition-all duration-300 backdrop-blur-sm"
+             className="hero-button inline-flex items-center gap-2 rounded-full border-2 border-white/30 font-medium text-white hover:bg-white/10 hover:border-accent/60 transition-all duration-300 backdrop-blur-sm"
              whileHover={{
                scale: 1.05,
                borderColor: "rgba(87, 255, 167, 0.6)",
@@ -241,7 +248,7 @@ export default function Hero() {
            <motion.a
              href="/Rehanul_Resume.pdf"
              download="Rehanul_Resume.pdf"
-             className="inline-flex items-center gap-2 rounded-full border-2 border-white/30 px-8 py-4 font-medium text-white hover:bg-white/10 hover:border-accent2/60 transition-all duration-300 backdrop-blur-sm"
+             className="hero-button inline-flex items-center gap-2 rounded-full border-2 border-white/30 font-medium text-white hover:bg-white/10 hover:border-accent2/60 transition-all duration-300 backdrop-blur-sm"
              whileHover={{
                scale: 1.05,
                borderColor: "rgba(122, 224, 255, 0.6)",
@@ -257,7 +264,7 @@ export default function Hero() {
 
            <motion.a
              href="#contact"
-             className="inline-flex items-center gap-2 rounded-full border-2 border-white/30 px-8 py-4 font-medium text-white hover:bg-white/10 hover:border-accent/60 transition-all duration-300 backdrop-blur-sm"
+             className="hero-button inline-flex items-center gap-2 rounded-full border-2 border-white/30 font-medium text-white hover:bg-white/10 hover:border-accent/60 transition-all duration-300 backdrop-blur-sm"
              whileHover={{
                scale: 1.05,
                borderColor: "rgba(87, 255, 167, 0.6)",

@@ -81,24 +81,20 @@ export default function StatsCounter() {
               </motion.div>
 
               <motion.div
-                className="text-4xl md:text-5xl font-bold bg-gradient-to-r from-accent to-accent2 bg-clip-text text-transparent mb-2"
+                className="text-4xl md:text-5xl font-bold bg-gradient-to-r from-accent to-accent2 bg-clip-text text-transparent mb-2 min-h-[3rem] md:min-h-[4rem] flex items-center justify-center"
                 initial={{ scale: 0 }}
                 whileInView={{ scale: 1 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: index * 0.1 + 0.3, type: "spring" }}
               >
-                {isInView ? (
-                  <motion.span
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    transition={{ duration: 0.5 }}
-                  >
-                    {stat.value}
-                    {stat.suffix}
-                  </motion.span>
-                ) : (
-                  `0${stat.suffix}`
-                )}
+                <motion.span
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  transition={{ duration: 0.5 }}
+                  className="inline-block min-w-[2.5rem] text-center"
+                >
+                  {isInView ? `${stat.value}${stat.suffix}` : `0${stat.suffix}`}
+                </motion.span>
               </motion.div>
 
               <p className="text-muted-foreground font-medium">{stat.label}</p>

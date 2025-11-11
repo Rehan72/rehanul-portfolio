@@ -56,7 +56,21 @@ const OptimizedImage = memo(({
   const generateSrcSet = (baseSrc) => {
     if (!baseSrc) return '';
 
-    const extensions = ['webp', 'jpg', 'png'];
+    // For external URLs (like Unsplash), use the existing optimized parameters
+    if (baseSrc.includes('unsplash.com') || baseSrc.startsWith('http')) {
+      // Unsplash already provides optimized images, just use different sizes
+      const sizes = [480, 768, 1024, 1280, 1920];
+      return sizes
+        .map(size => {
+          const url = new URL(baseSrc);
+          url.searchParams.set('w', size);
+          url.searchParams.set('h', Math.round(size * 0.6)); // Maintain aspect ratio
+          return `${url.toString()} ${size}w`;
+        })
+        .join(', ');
+    }
+
+    // For local images, use the original logic
     const sizes = [480, 768, 1024, 1280, 1920];
 
     return sizes
@@ -90,7 +104,10 @@ const OptimizedImage = memo(({
     <div
       ref={imgRef}
       className={`relative overflow-hidden ${className}`}
-      style={{ aspectRatio: width && height ? `${width}/${height}` : undefined }}
+      style={{
+        aspectRatio: width && height ? `${width}/${height}` : '16/10',
+        minHeight: width && height ? undefined : '250px' // Fallback for external images
+      }}
     >
       {/* Placeholder */}
       <AnimatePresence>
@@ -132,10 +149,17 @@ const OptimizedImage = memo(({
           />
 
           {/* Fallback sources */}
-          <source
-            srcSet={`${src}-480w.jpg 480w, ${src}-768w.jpg 768w, ${src}-1024w.jpg 1024w, ${src}-1280w.jpg 1280w`}
-            sizes="(max-width: 480px) 480px, (max-width: 768px) 768px, (max-width: 1024px) 1024px, 1280px"
-          />
+          {src.includes('unsplash.com') || src.startsWith('http') ? (
+            <source
+              srcSet={generateSrcSet(src)}
+              sizes="(max-width: 480px) 480px, (max-width: 768px) 768px, (max-width: 1024px) 1024px, 1280px"
+            />
+          ) : (
+            <source
+              srcSet={`${src}-480w.jpg 480w, ${src}-768w.jpg 768w, ${src}-1024w.jpg 1024w, ${src}-1280w.jpg 1280w`}
+              sizes="(max-width: 480px) 480px, (max-width: 768px) 768px, (max-width: 1024px) 1024px, 1280px"
+            />
+          )}
 
           <motion.img
             src={src}

@@ -255,6 +255,23 @@ html {
   100% { background-position: 200% 0; }
 }
 
+/* Section placeholder for lazy loading */
+.section-placeholder {
+  min-height: 400px;
+  background: linear-gradient(90deg, rgba(var(--muted), 0.1) 25%, rgba(var(--muted), 0.3) 50%, rgba(var(--muted), 0.1) 75%);
+  background-size: 200% 100%;
+  animation: loading 1.5s infinite;
+}
+
+@keyframes loading {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
+}
+
 /* Dark mode enhancements */
 .dark .card {
   background: linear-gradient(135deg, rgba(255,255,255,0.05), rgba(255,255,255,0.02));
@@ -324,11 +341,13 @@ html {
 /* Modern card hover effects */
 .card-hover {
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  overflow: hidden; /* Prevent effects from overflowing */
+  position: relative; /* Ensure proper stacking context */
 }
 
 .card-hover:hover {
-  transform: translateY(-8px) scale(1.02);
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+  transform: translateY(-2px) scale(1.005); /* Further reduced to prevent overflow */
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
 }
 
 /* Mobile responsiveness improvements */
@@ -355,11 +374,69 @@ html {
   .card {
     @apply p-4 md:p-6;
   }
+
+  /* Ensure touch targets are at least 44px */
+  button, a, input, textarea, select {
+    min-height: 44px;
+  }
+
+  /* Improve mobile navigation */
+  .mobile-nav-item {
+    @apply px-4 py-3 text-base;
+  }
+
+  /* Better mobile spacing for grids */
+  .grid-responsive {
+    @apply grid-cols-1 gap-4;
+  }
+
+  /* Mobile-specific text adjustments */
+  .hero-title {
+    @apply text-2xl leading-tight;
+  }
+
+  .hero-subtitle {
+    @apply text-lg leading-relaxed;
+  }
+
+  /* Mobile button adjustments */
+  .hero-button {
+    @apply px-6 py-3 text-sm w-full justify-center;
+  }
+
+  /* Mobile carousel adjustments */
+  .carousel-item {
+    @apply w-full;
+  }
 }
 
 /* Tablet responsiveness improvements */
 @media (min-width: 641px) and (max-width: 1024px) {
   .container {
     @apply px-6;
+  }
+
+  /* Tablet-specific adjustments */
+  .hero-button {
+    @apply px-8 py-4;
+  }
+
+  .carousel-item {
+    @apply w-full md:w-1/2;
+  }
+}
+
+/* Large screen improvements */
+@media (min-width: 1025px) {
+  .container {
+    @apply px-8;
+  }
+
+  .hero-button {
+    @apply px-8 py-4;
+  }
+
+  .carousel-item {
+    @apply w-full md:w-1/3;
   }
 }

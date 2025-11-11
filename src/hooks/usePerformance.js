@@ -15,9 +15,14 @@ export const usePerformance = () => {
 
   const [isMonitoring, setIsMonitoring] = useState(false);
 
+  // Only enable monitoring in development or when explicitly requested
+  const shouldMonitor = typeof window !== 'undefined' &&
+    (import.meta.env.DEV ||
+     localStorage.getItem('enable-performance-monitoring') === 'true');
+
   useEffect(() => {
-    // Only run in browser environment
-    if (typeof window === 'undefined') return;
+    // Only run in browser environment and when monitoring is enabled
+    if (!shouldMonitor) return;
 
     let fpsCounter = 0;
     let lastTime = performance.now();
@@ -189,7 +194,7 @@ export const useRenderPerformance = (componentName) => {
       setRenderTimes(prev => [...prev.slice(-9), renderTime]); // Keep last 10 renders
 
       // Log slow renders in development
-      if (process.env.NODE_ENV === 'development' && renderTime > 16) {
+      if (import.meta.env.DEV && renderTime > 16) {
         console.warn(`${componentName} slow render: ${renderTime.toFixed(2)}ms`);
       }
     };
