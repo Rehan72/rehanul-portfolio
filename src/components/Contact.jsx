@@ -7,17 +7,23 @@ export default function Contact() {
   const { register, handleSubmit, reset, formState: { errors, isSubmitting } } = useForm();
   const [submitStatus, setSubmitStatus] = useState(null);
 
-  const onSubmit = async (data) => {
+ const onSubmit = async (data) => {
     try {
       setSubmitStatus('sending');
 
-      // Simulate API call - replace with actual email service
-      const response = await fetch('/api/contact', {
+      // Using Formspree to send emails without API
+      const formData = new FormData();
+      formData.append('name', data.name);
+      formData.append('email', data.email);
+      formData.append('message', data.message);
+
+
+      const response = await fetch('https://formspree.io/f/mwprdlna', {
         method: 'POST',
+        body: formData,
         headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(data),
+          'Accept': 'application/json'
+        }
       });
 
       if (response.ok) {
@@ -33,6 +39,7 @@ export default function Contact() {
       setTimeout(() => setSubmitStatus(null), 5000);
     }
   };
+
 
   return (
     <Section id="contact">
@@ -140,7 +147,7 @@ export default function Contact() {
 
         <motion.form
           onSubmit={handleSubmit(onSubmit)}
-          className="card p-8 bg-gradient-to-br from-card to-card/80 border border-white/10"
+          className="w-full max-w-lg mx-auto p-6 sm:p-8 rounded-2xl bg-gradient-to-br from-card to-card/80 border border-white/10 shadow-lg"
           initial={{ opacity: 0, x: 20 }}
           whileInView={{ opacity: 1, x: 0 }}
           viewport={{ once: true }}
