@@ -10,7 +10,7 @@ const STATIC_ASSETS = [
   '/manifest.json',
   '/logo.svg',
   '/profile.jpg',
-  '/Rehanul_Resume.pdf'
+  '/Rehanul_Resume 1-Dec-25.pdf'
 ];
 
 // Install event - cache static assets

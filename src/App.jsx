@@ -83,7 +83,7 @@ export default function App() {
                     <a href="tel:+917277826285" className="block text-subtext hover:text-accent transition-colors">Phone</a>
                     <a href="https://github.com/Rehan72" target="_blank" rel="noopener noreferrer" className="block text-subtext hover:text-accent transition-colors">GitHub</a>
                     <a href="#" target="_blank" rel="noopener noreferrer" className="block text-subtext hover:text-accent transition-colors">LinkedIn</a>
-                    <a href="/Rehanul_Resume.pdf" download className="block text-subtext hover:text-accent transition-colors">Resume</a>
+                    <a href="/Rehanul_Resume 1-Dec-25.pdf" download className="block text-subtext hover:text-accent transition-colors">Resume</a>
                   </div>
                 </div>
               </div>

@@ -117,8 +117,8 @@ export default function Header() {
 
           {/* Download Resume Button */}
           <motion.a
-            href="/Rehanul_Resume.pdf"
-            download="Rehanul_Resume.pdf"
+            href="/Rehanul_Resume 1-Dec-25.pdf"
+            download="Rehanul_Resume 1-Dec-25.pdf"
             className="hidden md:flex items-center gap-2 px-4 py-2 rounded-lg border border-accent/20 text-accent hover:bg-accent/10 transition-all duration-300"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
@@ -174,8 +174,8 @@ export default function Header() {
                     key={item.href}
                     href={item.href}
                     className={`px-4 py-3 rounded-lg transition-colors duration-300 ${activeSection === item.href.substring(1)
-                        ? "bg-accent/10 text-accent"
-                        : "text-muted-foreground hover:text-accent hover:bg-card/50"
+                      ? "bg-accent/10 text-accent"
+                      : "text-muted-foreground hover:text-accent hover:bg-card/50"
                       }`}
                     initial={{ opacity: 0, x: -20 }}
                     animate={{ opacity: 1, x: 0 }}
@@ -188,8 +188,8 @@ export default function Header() {
 
                 {/* Mobile Resume Button */}
                 <motion.a
-                  href="/Rehanul_Resume.pdf"
-                  download="Rehanul_Resume.pdf"
+                  href="/Rehanul_Resume 1-Dec-25.pdf"
+                  download="Rehanul_Resume 1-Dec-25.pdf"
                   className="mt-4 mx-4 px-4 py-3 rounded-lg border border-accent/20 text-accent hover:bg-accent/10 transition-all duration-300 text-center"
                   initial={{ opacity: 0, y: 10 }}
                   animate={{ opacity: 1, y: 0 }}

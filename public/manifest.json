@@ -9,7 +9,11 @@
   "orientation": "portrait-primary",
   "scope": "/",
   "lang": "en-US",
-  "categories": ["portfolio", "developer", "technology"],
+  "categories": [
+    "portfolio",
+    "developer",
+    "technology"
+  ],
   "icons": [
     {
       "src": "/logo.svg",
@@ -41,7 +45,7 @@
       "name": "Download Resume",
       "short_name": "Resume",
       "description": "Download my resume",
-      "url": "/Rehanul_Resume.pdf",
+      "url": "/Rehanul_Resume 1-Dec-25.pdf",
       "icons": [
         {
           "src": "/logo.svg",
