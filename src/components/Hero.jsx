@@ -1,19 +1,11 @@
-import { useRef, useState, useEffect } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { useRef } from "react";
+import { motion } from "framer-motion";
 import { useTypewriter } from "../hooks/useTypewriter";
 
 export default function Hero() {
   const ref = useRef(null);
-  const [showImagePopup, setShowImagePopup] = useState(false);
 
-  // Close popup on ESC key
-  useEffect(() => {
-    const handleEsc = (e) => {
-      if (e.key === 'Escape') setShowImagePopup(false);
-    };
-    window.addEventListener('keydown', handleEsc);
-    return () => window.removeEventListener('keydown', handleEsc);
-  }, []);
+  
 
   // Optimized typewriter effect
   const animatedText = useTypewriter(
@@ -36,10 +28,11 @@ export default function Hero() {
     <section ref={ref} className="relative isolate min-h-[85vh] overflow-hidden">
       {/* Static background grid for better performance */}
       <div
-        className="absolute inset-0 opacity-40"
+        className="absolute inset-0 opacity-40 pointer-events-none"
         style={{
           backgroundImage: `radial-gradient(circle at 1px 1px, rgba(255,255,255,0.3) 1px, transparent 0)`,
-          backgroundSize: '50px 50px'
+          backgroundSize: '50px 50px',
+          pointerEvents: 'none'
         }}
       />
 
@@ -60,7 +53,7 @@ export default function Hero() {
       </div>
 
       {/* Static floating particles for better performance */}
-      <div className="absolute inset-0 overflow-hidden">
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
         {[...Array(6)].map((_, i) => (
           <div
             key={i}
@@ -262,14 +255,7 @@ export default function Hero() {
           transition={{ duration: 0.8, delay: 0.2 }}
         >
           <div
-            className="w-32 h-32 md:w-64 md:h-64 rounded-full border-4 border-accent/30 shadow-2xl overflow-hidden cursor-pointer hover:border-accent/60 transition-all duration-300"
-            onMouseEnter={() => setShowImagePopup(true)}
-            onMouseLeave={() => setShowImagePopup(false)}
-            role="button"
-            tabIndex={0}
-            onClick={() => setShowImagePopup(true)}
-            onKeyDown={(e) => e.key === 'Enter' && setShowImagePopup(true)}
-            aria-label="Hover or click to view full size image"
+            className="w-32 h-32 md:w-64 md:h-64 rounded-full border-4 border-accent/30 shadow-2xl overflow-hidden transition-all duration-300"
           >
             <img
               src="/IMG_20201111_145435.jpg"
@@ -283,46 +269,13 @@ export default function Hero() {
                 console.error('Image failed to load:', e);
                 e.target.style.display = 'none';
               }}
-              onLoad={() => console.log('Image loaded successfully')}
+              
             />
           </div>
         </motion.div>
       </div>
 
-      {/* Image Popup Modal */}
-      <AnimatePresence>
-        {showImagePopup && (
-          <motion.div
-            className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            onClick={() => setShowImagePopup(false)}
-          >
-            <motion.div
-              className="relative max-w-4xl max-h-[90vh]"
-              initial={{ scale: 0.8, opacity: 0 }}
-              animate={{ scale: 1, opacity: 1 }}
-              exit={{ scale: 0.8, opacity: 0 }}
-              transition={{ type: "spring", duration: 0.5 }}
-              onClick={(e) => e.stopPropagation()}
-            >
-              <button
-                className="absolute -top-12 right-0 text-white hover:text-accent transition-colors text-xl"
-                onClick={() => setShowImagePopup(false)}
-                aria-label="Close popup"
-              >
-                ✕ Close
-              </button>
-              <img
-                src="/IMG_20201111_145435.jpg"
-                alt="Rehanul Haque - Frontend Developer and EV Charging Specialist"
-                className="rounded-lg shadow-2xl max-w-full max-h-[90vh] object-contain"
-              />
-            </motion.div>
-          </motion.div>
-        )}
-      </AnimatePresence>
+      
     </section>
   );
 }
