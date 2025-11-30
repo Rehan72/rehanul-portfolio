@@ -18,7 +18,7 @@ const PageTransition = lazy(() => import("./components/PageTransition.jsx"));
 const ScrollToTop = lazy(() => import("./components/ScrollToTop.jsx"));
 const ParticleBackground = lazy(() => import("./components/ParticleBackground.jsx"));
 const StatsCounter = lazy(() => import("./components/StatsCounter.jsx"));
-const PWAInstallPrompt = lazy(() => import("./components/PWAInstallPrompt.jsx"));
+// const PWAInstallPrompt = lazy(() => import("./components/PWAInstallPrompt.jsx"));
 
 export default function App() {
   return (
@@ -97,9 +97,9 @@ export default function App() {
           <Suspense fallback={null}>
             <ScrollToTop />
           </Suspense>
-          <Suspense fallback={null}>
+          {/* <Suspense fallback={null}>
             <PWAInstallPrompt />
-          </Suspense>
+          </Suspense> */}
           <Suspense fallback={null}>
             <WhatsAppChat />
           </Suspense>
