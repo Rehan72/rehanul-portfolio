@@ -1,4 +1,5 @@
 import { lazy, Suspense } from "react";
+import useLenis from "./hooks/useLenis";
 
 // Critical components loaded immediately
 import Header from "./components/Header.jsx";
@@ -18,9 +19,11 @@ const PageTransition = lazy(() => import("./components/PageTransition.jsx"));
 const ScrollToTop = lazy(() => import("./components/ScrollToTop.jsx"));
 const ParticleBackground = lazy(() => import("./components/ParticleBackground.jsx"));
 const StatsCounter = lazy(() => import("./components/StatsCounter.jsx"));
-// const PWAInstallPrompt = lazy(() => import("./components/PWAInstallPrompt.jsx"));
+const PWAInstallPrompt = lazy(() => import("./components/PWAInstallPrompt.jsx"));
 
 export default function App() {
+  // Initialize Lenis smooth scrolling globally
+  useLenis();
   return (
     <ErrorBoundary>
       <Suspense fallback={<div className="min-h-screen bg-background" />}>
@@ -83,7 +86,7 @@ export default function App() {
                     <a href="tel:+917277826285" className="block text-subtext hover:text-accent transition-colors">Phone</a>
                     <a href="https://github.com/Rehan72" target="_blank" rel="noopener noreferrer" className="block text-subtext hover:text-accent transition-colors">GitHub</a>
                     <a href="#" target="_blank" rel="noopener noreferrer" className="block text-subtext hover:text-accent transition-colors">LinkedIn</a>
-                    <a href="/Rehanul_Resume 1-Dec-25.pdf" download className="block text-subtext hover:text-accent transition-colors">Resume</a>
+                    <a href="/Rehanul_Haque_Feb-25_Resume.pdf" download className="block text-subtext hover:text-accent transition-colors">Resume</a>
                   </div>
                 </div>
               </div>
@@ -97,9 +100,9 @@ export default function App() {
           <Suspense fallback={null}>
             <ScrollToTop />
           </Suspense>
-          {/* <Suspense fallback={null}>
+          <Suspense fallback={null}>
             <PWAInstallPrompt />
-          </Suspense> */}
+          </Suspense>
           <Suspense fallback={null}>
             <WhatsAppChat />
           </Suspense>
