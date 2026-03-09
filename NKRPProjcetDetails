@@ -1,0 +1,382 @@
+# NKERP (Hajj & Umrah Tour Management ERP) - Project Summary
+
+## 📋 Project Overview
+
+**Project Name:** NKERP (Nijam Khadra ERP)
+**Type:** Enterprise Web Application / ERP System
+**Purpose:** A comprehensive ERP system for managing Hajj and Umrah tour operations, including applicant management, visa processing, partner registration, transport management, accommodation, and financial transactions.
+**Industry:** Travel & Tourism (Religious Tourism - Hajj/Umrah)
+**Deployment:** Docker-based containerized deployment with Nginx
+
+---
+
+## 🛠️ Technology Stack
+
+### Frontend Technologies
+| Technology | Purpose | Version |
+|------------|---------|---------|
+| **React.js** | Core UI Framework | 18.2.0 |
+| **Redux Toolkit** | State Management | 2.0.1 |
+| **Redux Persist** | State Persistence | 6.0.0 |
+| **React Router DOM** | Client-side Routing | 6.14.2 |
+| **Material-UI (MUI)** | UI Component Library | 5.14.1 |
+| **MUI X Data Grid** | Advanced Data Tables | 6.12.1 |
+| **MUI X Date Pickers** | Date/Time Selection | 6.18.2 |
+| **React Hook Form** | Form Management | 7.45.2 |
+| **React Quill** | Rich Text Editor | 2.0.0 |
+| **Axios** | HTTP Client | 1.4.0 |
+| **Recharts** | Data Visualization/Charts | 2.8.0 |
+| **Material React Table** | Data Tables | 1.14.0 |
+| **React Big Calendar** | Calendar Component | 1.8.6 |
+| **React Select** | Dropdown Select | 5.8.0 |
+| **XLSX (SheetJS)** | Excel File Processing | 0.18.5 |
+| **File Saver** | File Download Handling | 2.0.5 |
+| **Moment / Dayjs / date-fns** | Date Utilities | Latest |
+| **Crypto-JS** | Encryption/Decryption | 4.1.1 |
+| **JWT Decode** | Token Handling | 3.1.2 |
+| **UUID** | Unique ID Generation | 10.0.0 |
+| **React Idle Timer** | Session Management | 5.7.2 |
+
+### Development & Build Tools
+| Technology | Purpose |
+|------------|---------|
+| **Webpack** | Module Bundler |
+| **Babel** | JavaScript Compiler |
+| **SCSS/SASS** | CSS Preprocessor |
+| **Docker** | Containerization |
+| **Nginx** | Web Server |
+| **GitLab CI/CD** | Continuous Integration |
+| **SonarQube** | Code Quality Analysis |
+
+### DevDependencies
+- @babel/core, @babel/preset-env, @babel/preset-react
+- sass, sass-loader, css-loader, style-loader
+- webpack, webpack-cli, webpack-dev-server
+- html-webpack-plugin, dotenv-webpack
+- babel-loader, url-loader
+
+---
+
+## 📁 Project Structure
+
+```
+nkerp-fr-rw/
+├── public/                    # Static assets
+│   ├── index.html
+│   └── favicon.ico
+├── src/
+│   ├── App.js                 # Root component with routing
+│   ├── index.js               # Entry point with Redux Provider
+│   ├── App.scss               # Global styles (62KB)
+│   ├── ToastContext.js        # Toast notification context
+│   ├── assets/                # Images, icons, logos
+│   ├── components/            # Reusable UI components
+│   │   ├── ActionIteam/
+│   │   ├── autoCompleteComponent/
+│   │   ├── dataGridTable/
+│   │   ├── dynamicDialog/
+│   │   ├── errorPages/
+│   │   ├── footer/
+│   │   ├── Form/
+│   │   ├── header/
+│   │   ├── popup/             # 25+ popup components
+│   │   ├── sidebar/
+│   │   ├── tableTitle/
+│   │   ├── topmenus/
+│   │   ├── WidegtStatusCard/
+│   │   ├── FileUpload.js
+│   │   ├── TextEditor.js
+│   │   └── UserRedirection.js
+│   ├── features/              # Feature modules
+│   │   ├── authenticationForm/
+│   │   ├── changePassword/
+│   │   ├── checkStatus/
+│   │   ├── dashboard/         # Main dashboard & tour management
+│   │   │   └── TourDashboard/ # Tour CRUD operations
+│   │   ├── ForgetPassword/
+│   │   ├── leaveRequest/
+│   │   ├── loanRequest/
+│   │   ├── login/
+│   │   ├── loginRenewal/
+│   │   ├── loginRequiredRequest/
+│   │   ├── ManageProfile/
+│   │   ├── manageTransport/
+│   │   ├── masterLayout/
+│   │   ├── moreSetup/
+│   │   ├── muwafiqaandPayment/
+│   │   ├── muwafiqaProcessing/
+│   │   ├── passportVisaRequest/
+│   │   ├── registrationRenewal/
+│   │   ├── registrationRequest/
+│   │   ├── signup/
+│   │   ├── systemSetup/
+│   │   └── tourRequest/
+│   ├── routes/                # Route definitions
+│   │   ├── PrivateRoutes.js
+│   │   └── ProtectedRoute.js
+│   ├── services/              # API services
+│   │   ├── AuthService.js
+│   │   ├── LeaveRequestService.js
+│   │   ├── RegistrationService.js
+│   │   ├── TourRequestService.js
+│   │   ├── tourDashboardService.js
+│   │   ├── MuwafiqaProcessingService.js
+│   │   └── apiUrls.json
+│   ├── shared/                # Shared utilities
+│   │   ├── Spinner.js
+│   │   ├── Toast.js
+│   │   └── ToastContainer.js
+│   ├── store/                 # Redux store & slices
+│   │   ├── store.js
+│   │   ├── UserDataSlice.js
+│   │   ├── CountrySlice.js
+│   │   ├── Cityslice.js
+│   │   ├── VenueSlice.js
+│   │   └── 10+ other slices
+│   └── utils/                 # Utility functions
+├── .babelrc                    # Babel configuration
+├── .gitlab-ci.yml             # CI/CD pipeline
+├── Dockerfile                  # Docker configuration
+├── webpack.config.js          # Webpack configuration
+├── nginx.conf                 # Nginx configuration
+└── package.json               # Dependencies
+```
+
+---
+
+## 🎯 Key Features & Modules
+
+### 1. **Authentication & Authorization**
+- Login/Logout functionality
+- JWT-based authentication
+- Password management (Change, Reset, Forgot)
+- Session management with idle timer
+- Role-based access control
+
+### 2. **Tour Management**
+- Create, Read, Update, Delete tours
+- Tour package creation
+- Tour applicant management
+- Family view details
+- Tour list with filtering
+- Download visa forms & manifests
+
+### 3. **Applicant Management**
+- Add applicants to tours
+- Applicant profile management
+- Visa application processing
+- Document management
+- Status tracking
+
+### 4. **Partner Management**
+- Partner registration requests
+- Partner approval workflow
+- Partner dashboard
+- Partner profile management
+
+### 5. **Visa Processing**
+- Visa application workflow
+- Muwafiqa (approval) processing
+- Visa status tracking
+- Document upload/download
+
+### 6. **Financial Management**
+- Payment processing
+- Muwafiqa fee collection
+- Payment tracking
+- Financial reporting
+
+### 7. **Transport Management**
+- Transport itinerary planning
+- Vehicle occupancy tracking
+- Transport schedule management
+
+### 8. **Accommodation Management**
+- Hotel/accommodation booking
+- Room allocation
+- Accommodation reports
+
+### 9. **Leave Management**
+- Leave request submission
+- Leave approval workflow
+- Leave history tracking
+
+### 10. **Registration Management**
+- Partner registration
+- Registration renewal
+- Registration status tracking
+
+### 11. **System Administration**
+- User profile management
+- Company profile setup
+- System configuration
+
+---
+
+## 📊 Data Management
+
+### Redux Store Slices (16 slices)
+- User Data Management
+- Company Profile
+- Leave Register
+- Country List
+- City List
+- Venue Management
+- Tour Reference Numbers
+- Email Management
+- ITS Number Management
+- Office Name Management
+- Widget/Dashboard Bindings
+
+---
+
+## 🚀 DevOps & Deployment
+
+### CI/CD Pipeline (GitLab CI)
+1. **SonarQube Check** - Code quality analysis
+2. **QA Tag Release** - Release tagging
+3. **QA Docker Image** - Docker image build
+4. **QA Image Deploy** - Deployment to server
+
+### Docker Configuration
+- Multi-stage Docker build
+- Node.js Alpine base image for build
+- Nginx Alpine for serving
+- Port: 5858
+- Environment variable support
+
+### Nginx Configuration
+- Reverse proxy to backend API
+- Client max body size: 100MB
+- Keep-alive timeout: 20 minutes
+- SPA routing support (try_files)
+
+---
+
+## 💼 Skills Demonstrated (For Resume)
+
+### Technical Skills
+- ✅ React.js 18 with Functional Components & Hooks
+- ✅ Redux Toolkit for State Management
+- ✅ RESTful API Integration (Axios)
+- ✅ Material-UI Component Library
+- ✅ Form Management (React Hook Form)
+- ✅ Data Tables (MUI X Data Grid, Material React Table)
+- ✅ File Processing (Excel, CSV, PDF)
+- ✅ Authentication (JWT, OAuth concepts)
+- ✅ Docker & Containerization
+- ✅ Nginx Web Server Configuration
+- ✅ CI/CD Pipeline (GitLab)
+- ✅ SCSS/CSS3 Styling
+- ✅ Webpack Build Configuration
+- ✅ Code Quality Tools (SonarQube)
+- ✅ Git Version Control
+
+### Soft Skills
+- ✅ Enterprise Application Development
+- ✅ Large-scale Codebase Management
+- ✅ Component Architecture & Reusability
+- ✅ Performance Optimization
+- ✅ Responsive Design Implementation
+
+---
+
+## 🎤 Interview Talking Points
+
+### Project Challenges & Solutions
+1. **Large File Upload** - Configured Nginx for 100MB max body size
+2. **State Persistence** - Implemented Redux Persist for offline state
+3. **Complex Forms** - Used React Hook Form for efficient form handling
+4. **Data Grid Performance** - Implemented MUI X Data Grid with pagination
+5. **Session Management** - Used React Idle Timer for auto-logout
+6. **Excel Export** - Integrated SheetJS (XLSX) for data export
+7. **Date Handling** - Used multiple date libraries (moment, dayjs, date-fns)
+8. **Routing** - Implemented protected routes with role-based access
+
+### Architecture Highlights
+- Modular feature-based architecture
+- Reusable component design patterns
+- Centralized API service layer
+- Redux slices for domain-specific state
+- Toast notification system
+- Global error handling
+
+### Key Achievements
+- Complete ERP system for Hajj/Umrah operations
+- 25+ popup components for various operations
+- Multiple module integrations
+- Docker-based deployment pipeline
+- Code quality maintained with SonarQube
+
+---
+
+## 📝 How to Download Summary
+
+You can create a downloadable summary by:
+
+### Option 1: Export from VS Code
+1. Open this project in VS Code
+2. Press `Ctrl+Shift+P` (or `Cmd+Shift+P` on Mac)
+3. Type "Markdown" and select "Markdown: Open Preview"
+4. Copy the content and save as `.md` or `.pdf`
+
+### Option 2: Create PDF
+1. Copy this entire document
+2. Paste into Google Docs or Microsoft Word
+3. Export as PDF using File → Download → PDF
+
+### Option 3: Use Terminal
+```bash
+# Navigate to project directory
+cd /home/rehanul.haque@tekmindz.com/Documents/NKRP/nkerp-fr-rw
+
+# Copy this file content to a new file
+cat > PROJECT_SUMMARY.md << 'EOF'
+[Copy the content above]
+EOF
+
+# Or create a text file with project info
+echo "Project: NKERP - Hajj & Umrah Tour Management ERP" > summary.txt
+echo "Tech Stack: React.js, Redux Toolkit, Material-UI, Docker" >> summary.txt
+```
+
+---
+
+## 🔗 Portfolio Website Content
+
+### Project Title
+**NKERP - Hajj & Umrah Tour Management System**
+
+### Description
+Enterprise-grade ERP system for managing complete Hajj and Umrah tour operations including applicant management, visa processing, transport, accommodation, and financial transactions.
+
+### Tech Stack
+React.js | Redux Toolkit | Material-UI | Docker | Nginx | GitLab CI/CD
+
+### Features
+- Tour Package Management
+- Applicant Registration & Tracking
+- Visa Processing & Muwafiqa System
+- Partner Management
+- Transport & Accommodation Booking
+- Financial Transactions
+- Leave Management System
+
+### GitHub/GitLab Link
+*(Add your repository URL)*
+
+---
+
+## 📌 Additional Notes
+
+- **Project Type:** Frontend React Application (consuming REST API)
+- **Backend:** External API (proxied through Nginx to 192.168.10.44:9092)
+- **Build Output:** Production-ready Docker image
+- **Code Quality:** Maintained via SonarQube
+- **Deployment:** Automated via GitLab CI/CD
+
+---
+
+*Generated for Resume & Portfolio purposes*
+*Last Updated: March 2026*
+

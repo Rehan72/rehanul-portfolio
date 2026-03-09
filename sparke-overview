@@ -1,0 +1,434 @@
+{
+  "projectName": "Sparke EV Charging Portal",
+  "projectType": "Enterprise SaaS Web Application",
+  "domain": "EV (Electric Vehicle) Charging Station Management - CPO Platform",
+  
+  "techStack": {
+    "frontend": [
+      "React 17",
+      "Redux + Redux-Saga",
+      "React Router DOM v5",
+      "Material-UI (MUI v4/v5)",
+      "React Hook Form",
+      "Axios",
+      "ECharts / echarts-for-react",
+      "Google Maps API",
+      "SASS/SCSS",
+      "Storybook",
+      "Jest + React Testing Library"
+    ],
+    "devOps": [
+      "Docker",
+      "Nginx",
+      "Node.js 16"
+    ]
+  },
+
+  "userRoles": [
+    "Super Admin",
+    "CPO Admin", 
+    "Enterprise Admin",
+    "Corporate Admin",
+    "Operator",
+    "Field Operator",
+    "Corporate User / Driver"
+  ],
+
+  "keyFeatures": [
+    "Dashboard & Analytics with real-time statistics",
+    "Network Management (CPO) - Multi-site monitoring",
+    "Assets Management - Sites, Chargers, Vehicles, Accessories",
+    "Charging Operations - Configuration, Diagnostics, OCPP protocols",
+    "Transaction & Billing - Pricing plans, Subscriptions",
+    "User Management - Multi-role RBAC",
+    "Customer Management - CPO, Enterprise, Corporate accounts",
+    "Reports & Analytics - Charger, Energy, Session, Site reports",
+    "Alerts & Notifications system",
+    "Support & Diagnostics - Remote diagnostics, Firmware updates",
+    "Reconciliation - Financial reconciliation and reporting"
+  ],
+
+  "technicalHighlights": [
+    "Multi-tenant SaaS architecture",
+    "Role-based access control (RBAC)",
+    "Protected routes with JWT authentication",
+    "Dynamic form generation system",
+    "RESTful API integration with Axios interceptors",
+    "Responsive design (mobile-friendly)",
+    "Data visualization with ECharts",
+    "Google Maps integration for location features",
+    "PDF/CSV export capabilities",
+    "80%+ test coverage with Jest"
+  ],
+
+  "keyDependencies": [
+    "@mui/material", "@mui/icons-material", "@mui/x-data-grid",
+    "react-redux", "redux-saga", "redux-devtools-extension",
+    "react-router-dom", "axios", "react-hook-form",
+    "echarts", "echarts-for-react", "google-map-react",
+    "jspdf", "react-csv", "moment", "dayjs",
+    "material-table", "react-select", "multiselect-react-dropdown",
+    "crypto-js", "jwt-decode", "react-notifications",
+    "sass", "styled-components", "classnames"
+  ],
+
+  "interviewTalkingPoints": [
+    "Enterprise SaaS Development - Building scalable multi-tenant applications",
+    "Complex State Management - Redux + Redux-Saga patterns",
+    "Role-Based Access Control - Implemented granular permissions for 7+ roles",
+    "Form Handling - Dynamic form generation system with React Hook Form",
+    "API Integration - RESTful services, JWT auth, Axios interceptors",
+    "UI Component Library - Material-UI customization and theming",
+    "Data Visualization - Charts, reports, dashboards with ECharts",
+    "Maps Integration - Google Maps API for location-based features",
+    "Testing - Jest, React Testing Library, code coverage",
+    "Docker - Containerization and production deployment",
+    "EV Charging Domain - Understanding of OCPP protocols, charging sessions, pricing models"
+  ],
+
+  "resumeBulletPoints": [
+    "Developed and maintained Sparke EV Charging Portal, an enterprise-level SaaS application for managing EV charging infrastructure",
+    "Implemented multi-role RBAC system supporting 7+ user roles (Super Admin, CPO Admin, Enterprise Admin, Corporate Admin, Operator, Field Operator, Driver)",
+    "Built dynamic form generation system using React Hook Form for configurable business forms",
+    "Integrated Google Maps API for location-based charging station management",
+    "Created real-time dashboards with ECharts for monitoring charging sessions, energy consumption, and revenue",
+    "Implemented Redux + Redux-Saga for complex async state management across the application",
+    "Developed RESTful API integrations with JWT authentication and Axios interceptors",
+    "Achieved 80%+ test coverage using Jest and React Testing Library",
+    "Containerized application using Docker for production deployment with Nginx",
+    "Optimized application performance with lazy loading, code splitting, and memoization techniques"
+  ],
+
+  "projectStructure": {
+    "components": "Reusable UI components",
+    "config": "App configuration, roles, URLs",
+    "formGenerator": "Dynamic form generation system",
+    "screen": "Feature-specific screens",
+    "service": "API services layer",
+    "store": "Redux store configuration",
+    "common": "Utilities, constants, i18n",
+    "__tests__": "Comprehensive test suite (100+ test files)"
+  }
+}
+
+
+# SparkE Portal - Project Details for Resume
+
+## 🏢 Project Overview
+**Sparke** is an **EV Charging Station Management Portal** (CPO - Charge Point Operator Platform) - A comprehensive web application for managing electric vehicle charging infrastructure. This is an enterprise-level SaaS platform with multi-tenant architecture supporting different user roles.
+
+---
+
+## 🛠 Tech Stack
+
+### Frontend
+| Technology | Purpose |
+|------------|---------|
+| **React 17** | Core UI Framework |
+| **Redux + Redux-Saga** | State Management |
+| **React Router DOM v5** | Client-side Routing |
+| **Material-UI (MUI v4/v5)** | UI Component Library |
+| **React Hook Form** | Form Handling |
+| **Axios** | HTTP Client |
+| **ECharts / echarts-for-react** | Data Visualization & Charts |
+| **Google Maps API** | Location/Mapping Features |
+| **SASS/SCSS** | CSS Preprocessor |
+| **Storybook** | Component Documentation |
+| **Jest + React Testing Library** | Unit Testing |
+
+### DevOps & Build
+| Technology | Purpose |
+|------------|---------|
+| **Docker** | Containerization |
+| **Nginx** | Web Server (Production) |
+| **Node.js 16** | Runtime Environment |
+
+---
+
+## 👥 User Roles (RBAC)
+1. **Super Admin** - Full system access
+2. **CPO Admin** - Network operator administration
+3. **Enterprise Admin** - Enterprise-level management
+4. **Corporate Admin** - Corporate account management
+5. **Operator** - Day-to-day operations
+6. **Field Operator** - On-site technician
+7. **Corporate User / Driver** - End-user access
+
+---
+
+## 📱 Key Features & Modules
+
+### 1. Dashboard & Analytics
+- Real-time charging station statistics
+- CPO-specific dashboards
+- Widget-based data visualization
+- Energy consumption reports
+
+### 2. Network Management (CPO)
+- Network-wide monitoring
+- Multi-site management
+
+### 3. Assets Management
+- **Site Management** - Charging station locations
+- **Charger Management** - EV chargers (with diagnostics)
+- **Vehicle Management** - Fleet/EV assets
+- **Accessories** - Supporting equipment
+
+### 4. Charging Operations
+- Charger configuration & monitoring
+- Port-level management
+- Real-time charger status
+- Remote diagnostics & control (OCPP protocols)
+- Charging profiles management
+
+### 5. Transaction & Billing
+- Transaction monitoring
+- Pricing plan management (time-based, dynamic)
+- Subscription plans
+- Reconciliation reports
+
+### 6. User Management
+- Multi-role user management
+- User allocation & permissions
+- Driver management
+
+### 7. Customer Management
+- CPO/Network providers
+- Enterprise customers
+- Corporate accounts
+
+### 8. Reports & Analytics
+- Charger reports
+- Energy reports
+- Session reports
+- Site reports
+- Enterprise reports
+- Transaction reports
+
+### 9. Alerts & Notifications
+- Real-time alerts system
+- Multi-channel notifications
+
+### 10. Support & Diagnostics
+- Remote diagnostics (OCPP based)
+- Service request management
+- Firmware updates
+- Configuration management
+
+### 11. Reconciliation
+- Financial reconciliation
+- Configuration management
+- Reporting
+
+---
+
+## 🔧 Technical Highlights
+
+### Architecture
+- **Multi-tenant SaaS** architecture
+- **Role-based access control (RBAC)**
+- **Protected routes** with authentication
+- **Dynamic form generation** (Form Generator pattern)
+- **Lazy loading** for performance
+
+### API Integration
+- RESTful API consumption
+- JWT-based authentication
+- Token management service
+- Axios interceptors for auth
+
+### UI/UX Features
+- Responsive design (mobile-friendly)
+- Dark/Light theming support
+- Internationalization (i18n ready)
+- Custom form components
+- Data tables with filtering/pagination
+- Charts and visualizations
+- Map integration (Google Maps)
+- PDF/CSV export capabilities
+
+### Testing
+- Unit testing with Jest
+- Component testing with React Testing Library
+- Snapshot testing
+- Coverage reporting (SonarQube)
+
+---
+
+## 📦 Key Dependencies
+```
+@mui/material, @mui/icons-material, @mui/x-data-grid
+react-redux, redux-saga, redux-devtools-extension
+react-router-dom, axios, react-hook-form
+echarts, echarts-for-react, google-map-react
+jspdf, react-csv, moment, dayjs
+material-table, react-select, multiselect-react-dropdown
+crypto-js, jwt-decode, react-notifications
+sass, styled-components, classnames
+```
+
+---
+
+## 🎯 Interview Talking Points
+
+1. **Enterprise SaaS Development** - Experience building scalable multi-tenant applications
+2. **Complex State Management** - Redux + Redux-Saga patterns
+3. **Role-Based Access Control** - Implemented granular permissions
+4. **Form Handling** - Dynamic form generation system
+5. **API Integration** - RESTful services, JWT auth, interceptors
+6. **UI Component Library** - Material-UI customization & theming
+7. **Data Visualization** - Charts, reports, dashboards
+8. **Maps Integration** - Google Maps for location-based features
+9. **Testing** - Jest, React Testing Library, code coverage
+10. **Docker** - Containerization knowledge
+11. **EV Charging Domain** - Understanding of EV charging protocols (OCPP), charging sessions, pricing models
+
+---
+
+## 📂 Project Structure Highlights
+```
+src/
+├── components/      # Reusable UI components
+├── config/          # App configuration, roles, URLs
+├── formGenerator/   # Dynamic form generation system
+├── screen/          # Feature-specific screens
+├── service/         # API services layer
+├── store/           # Redux store configuration
+├── common/          # Utilities, constants, i18n
+└── __tests__/       # Comprehensive test suite
+```
+
+---
+
+## 📋 Resume Bullet Points (Suggested)
+
+- Developed and maintained **Sparke EV Charging Portal**, an enterprise-level SaaS application for managing EV charging infrastructure
+- Implemented **multi-role RBAC system** supporting 7+ user roles (Super Admin, CPO Admin, Enterprise Admin, Corporate Admin, Operator, Field Operator, Driver)
+- Built **dynamic form generation system** using React Hook Form for configurable business forms
+- Integrated **Google Maps API** for location-based charging station management
+- Created **real-time dashboards** with ECharts for monitoring charging sessions, energy consumption, and revenue
+- Implemented **Redux + Redux-Saga** for complex async state management across the application
+- Developed **RESTful API integrations** with JWT authentication and Axios interceptors
+- Achieved **80%+ test coverage** using Jest and React Testing Library
+- Containerized application using **Docker** for production deployment with Nginx
+- Optimized application performance with lazy loading, code splitting, and memoization techniques
+- Collaborated with cross-functional teams to deliver features for **EV charging domain** including OCPP protocols, pricing models, and reconciliation
+
+---
+
+This is a **large-scale enterprise application** with 100+ test files, comprehensive routing, and complex business logic - demonstrating senior-level React development capabilities.
+
+
+{
+  "projectName": "Sparke EV Charging Portal",
+  "projectType": "Enterprise SaaS Web Application",
+  "domain": "EV (Electric Vehicle) Charging Station Management - CPO Platform",
+  
+  "techStack": {
+    "frontend": [
+      "React 17",
+      "Redux + Redux-Saga",
+      "React Router DOM v5",
+      "Material-UI (MUI v4/v5)",
+      "React Hook Form",
+      "Axios",
+      "ECharts / echarts-for-react",
+      "Google Maps API",
+      "SASS/SCSS",
+      "Storybook",
+      "Jest + React Testing Library"
+    ],
+    "devOps": [
+      "Docker",
+      "Nginx",
+      "Node.js 16"
+    ]
+  },
+
+  "userRoles": [
+    "Super Admin",
+    "CPO Admin", 
+    "Enterprise Admin",
+    "Corporate Admin",
+    "Operator",
+    "Field Operator",
+    "Corporate User / Driver"
+  ],
+
+  "keyFeatures": [
+    "Dashboard & Analytics with real-time statistics",
+    "Network Management (CPO) - Multi-site monitoring",
+    "Assets Management - Sites, Chargers, Vehicles, Accessories",
+    "Charging Operations - Configuration, Diagnostics, OCPP protocols",
+    "Transaction & Billing - Pricing plans, Subscriptions",
+    "User Management - Multi-role RBAC",
+    "Customer Management - CPO, Enterprise, Corporate accounts",
+    "Reports & Analytics - Charger, Energy, Session, Site reports",
+    "Alerts & Notifications system",
+    "Support & Diagnostics - Remote diagnostics, Firmware updates",
+    "Reconciliation - Financial reconciliation and reporting"
+  ],
+
+  "technicalHighlights": [
+    "Multi-tenant SaaS architecture",
+    "Role-based access control (RBAC)",
+    "Protected routes with JWT authentication",
+    "Dynamic form generation system",
+    "RESTful API integration with Axios interceptors",
+    "Responsive design (mobile-friendly)",
+    "Data visualization with ECharts",
+    "Google Maps integration for location features",
+    "PDF/CSV export capabilities",
+    "80%+ test coverage with Jest"
+  ],
+
+  "keyDependencies": [
+    "@mui/material", "@mui/icons-material", "@mui/x-data-grid",
+    "react-redux", "redux-saga", "redux-devtools-extension",
+    "react-router-dom", "axios", "react-hook-form",
+    "echarts", "echarts-for-react", "google-map-react",
+    "jspdf", "react-csv", "moment", "dayjs",
+    "material-table", "react-select", "multiselect-react-dropdown",
+    "crypto-js", "jwt-decode", "react-notifications",
+    "sass", "styled-components", "classnames"
+  ],
+
+  "interviewTalkingPoints": [
+    "Enterprise SaaS Development - Building scalable multi-tenant applications",
+    "Complex State Management - Redux + Redux-Saga patterns",
+    "Role-Based Access Control - Implemented granular permissions for 7+ roles",
+    "Form Handling - Dynamic form generation system with React Hook Form",
+    "API Integration - RESTful services, JWT auth, Axios interceptors",
+    "UI Component Library - Material-UI customization and theming",
+    "Data Visualization - Charts, reports, dashboards with ECharts",
+    "Maps Integration - Google Maps API for location-based features",
+    "Testing - Jest, React Testing Library, code coverage",
+    "Docker - Containerization and production deployment",
+    "EV Charging Domain - Understanding of OCPP protocols, charging sessions, pricing models"
+  ],
+
+  "resumeBulletPoints": [
+    "Developed and maintained Sparke EV Charging Portal, an enterprise-level SaaS application for managing EV charging infrastructure",
+    "Implemented multi-role RBAC system supporting 7+ user roles (Super Admin, CPO Admin, Enterprise Admin, Corporate Admin, Operator, Field Operator, Driver)",
+    "Built dynamic form generation system using React Hook Form for configurable business forms",
+    "Integrated Google Maps API for location-based charging station management",
+    "Created real-time dashboards with ECharts for monitoring charging sessions, energy consumption, and revenue",
+    "Implemented Redux + Redux-Saga for complex async state management across the application",
+    "Developed RESTful API integrations with JWT authentication and Axios interceptors",
+    "Achieved 80%+ test coverage using Jest and React Testing Library",
+    "Containerized application using Docker for production deployment with Nginx",
+    "Optimized application performance with lazy loading, code splitting, and memoization techniques"
+  ],
+
+  "projectStructure": {
+    "components": "Reusable UI components",
+    "config": "App configuration, roles, URLs",
+    "formGenerator": "Dynamic form generation system",
+    "screen": "Feature-specific screens",
+    "service": "API services layer",
+    "store": "Redux store configuration",
+    "common": "Utilities, constants, i18n",
+    "__tests__": "Comprehensive test suite (100+ test files)"
+  }
+}
+

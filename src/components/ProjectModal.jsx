@@ -68,7 +68,12 @@ export default function ProjectModal({ project, isOpen, onClose }) {
                 animate={{ y: 0, opacity: 1 }}
                 transition={{ delay: 0.2, duration: 0.5 }}
               >
-                <h2 className="text-2xl md:text-3xl font-bold mb-4">{project.title}</h2>
+                <h2 className="text-2xl md:text-3xl font-bold mb-2">{project.title}</h2>
+                {project.period && (
+                  <span className="text-sm font-medium text-accent px-3 py-1 bg-accent/10 rounded-full mb-4 inline-block">
+                    {project.period}
+                  </span>
+                )}
 
                 <p className="text-muted-foreground text-lg leading-relaxed mb-6">
                   {project.longDesc}

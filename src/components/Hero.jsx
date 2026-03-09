@@ -64,10 +64,10 @@ export default function Hero() {
          ))}
        </div>
 
-       <div className="container flex min-h-[85vh] flex-col items-start justify-center">
-         {/* Profile Image */}
+       <div className="container flex min-h-[85vh] flex-col md:flex-row items-center justify-between gap-12 py-20 px-4">
+         {/* Profile Image - Mobile Only */}
          <motion.div
-           className="mb-8"
+           className="md:hidden mb-8"
            initial={{ opacity: 0, scale: 0.8 }}
            animate={{ opacity: 1, scale: 1 }}
            transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
@@ -77,27 +77,20 @@ export default function Hero() {
              whileHover={{ scale: 1.05 }}
              transition={{ duration: 0.3 }}
            >
-             <div className="w-32 h-32 md:w-40 md:h-40 rounded-full border-4 border-accent/30 shadow-2xl overflow-hidden">
+             <div className="w-40 h-40 rounded-full border-4 border-accent/30 shadow-2xl overflow-hidden">
                <img
                  src="/profile.jpg"
-                 alt="Rehanul Haque - Frontend Developer and EV Charging Specialist"
+                 alt="Rehanul Haque - Mobile Profile"
                  className="w-full h-full object-cover"
-                 loading="eager"
-                 decoding="async"
-                 width="160"
-                 height="160"
-                 onError={(e) => {
-                   console.error('Image failed to load:', e);
-                   e.target.style.display = 'none';
-                 }}
-                 onLoad={() => console.log('Image loaded successfully')}
                />
              </div>
-             <div
-               className="absolute inset-0 rounded-full bg-gradient-to-tr from-accent/20 to-transparent opacity-0.4"
-             />
            </motion.div>
          </motion.div>
+
+         <div className="flex-1 flex flex-col items-start justify-center">
+
+
+
 
          <motion.div
            initial={{ opacity: 0, y: 20 }}
@@ -276,6 +269,43 @@ export default function Hero() {
              Get In Touch
            </motion.a>
          </motion.div>
+       </div>
+
+
+         {/* Profile Image */}
+         <motion.div
+           className="relative z-10 hidden md:block" // Hidden on mobile, shown on desktop
+           initial={{ opacity: 0, scale: 0.8 }}
+           animate={{ opacity: 1, scale: 1 }}
+           transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
+         >
+           <motion.div
+             className="relative"
+             whileHover={{ scale: 1.05 }}
+             transition={{ duration: 0.3 }}
+           >
+             <div className="w-48 h-48 md:w-64 md:h-64 lg:w-80 lg:h-80 rounded-full border-4 border-accent/30 shadow-2xl overflow-hidden">
+               <img
+                 src="/profile.jpg"
+                 alt="Rehanul Haque - Frontend Developer and EV Charging Specialist"
+                 className="w-full h-full object-cover"
+                 loading="eager"
+                 decoding="async"
+                 width="320"
+                 height="320"
+                 onError={(e) => {
+                   console.error('Image failed to load:', e);
+                   e.target.style.display = 'none';
+                 }}
+                 onLoad={() => console.log('Image loaded successfully')}
+               />
+             </div>
+             <div
+               className="absolute inset-0 rounded-full bg-gradient-to-tr from-accent/20 to-transparent opacity-0.4"
+             />
+           </motion.div>
+         </motion.div>
+
        </div>
      </section>
    );

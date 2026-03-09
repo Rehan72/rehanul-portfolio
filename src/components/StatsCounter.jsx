@@ -16,18 +16,12 @@ export default function StatsCounter() {
     },
     {
       label: "Projects Completed",
-      value: 25,
+      value: 5,
       suffix: "+",
       icon: "🚀",
       color: "from-accent2 to-accent"
     },
-    {
-      label: "Happy Clients",
-      value: 15,
-      suffix: "+",
-      icon: "😊",
-      color: "from-green-500 to-accent"
-    },
+    
     {
       label: "Technologies",
       value: 20,

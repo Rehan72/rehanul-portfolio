@@ -90,11 +90,11 @@ export default function About() {
                 </motion.div>
                 <div>
                   <h3 className="text-xl font-bold text-foreground">Frontend Expertise</h3>
-                  <p className="text-accent font-medium">Modern Web Development</p>
+                  <p className="text-accent font-medium">React & Angular Development</p>
                 </div>
               </div>
               <p className="text-subtext leading-relaxed">
-                3.5+ years crafting responsive, accessible, and performant web applications using modern React, JavaScript, and CSS frameworks. Specialized in building scalable user interfaces with exceptional user experiences.
+                3.5+ years building enterprise-grade web applications using React and Angular. Specialized in scalable frontend architectures, state management with Redux, and creating exceptional user experiences with Material-UI and custom designs.
               </p>
             </motion.div>
 
@@ -116,12 +116,12 @@ export default function About() {
                   </svg>
                 </motion.div>
                 <div>
-                  <h3 className="text-xl font-bold text-foreground">Network Engineering</h3>
-                  <p className="text-accent2 font-medium">System Infrastructure</p>
+                  <h3 className="text-xl font-bold text-foreground">Enterprise Solutions</h3>
+                  <p className="text-accent2 font-medium">Full-Stack Capabilities</p>
                 </div>
               </div>
               <p className="text-subtext leading-relaxed">
-                2.5+ years as Network Engineer developing deep understanding of system reliability, performance tuning, and API architectures. Expert in optimizing network performance and troubleshooting complex infrastructure issues.
+                Experience building 6+ enterprise projects including EV Charging Management Systems, ERP solutions, and Smart Card Management systems. Proficient in Docker, CI/CD pipelines, and delivering production-ready applications with 99.9% uptime.
               </p>
             </motion.div>
           </div>
@@ -175,9 +175,9 @@ export default function About() {
                   className="text-3xl font-bold text-accent2 mb-3 group-hover:scale-110 transition-transform duration-300"
                   whileHover={{ scale: 1.1 }}
                 >
-                  Real-time
+                  ERP Systems
                 </motion.div>
-                <p className="text-sm text-subtext font-medium">Status Monitoring</p>
+                <p className="text-sm text-subtext font-medium">Tour Management</p>
                 <div className="mt-3 w-12 h-1 bg-accent2/30 mx-auto rounded-full"></div>
               </motion.div>
               <motion.div
@@ -191,9 +191,9 @@ export default function About() {
                   className="text-3xl font-bold text-green-500 mb-3 group-hover:scale-110 transition-transform duration-300"
                   whileHover={{ scale: 1.1 }}
                 >
-                  Performance
+                  Smart Card
                 </motion.div>
-                <p className="text-sm text-subtext font-medium">Optimization</p>
+                <p className="text-sm text-subtext font-medium">Management Systems</p>
                 <div className="mt-3 w-12 h-1 bg-green-500/30 mx-auto rounded-full"></div>
               </motion.div>
             </div>
@@ -204,7 +204,7 @@ export default function About() {
               transition={{ delay: 1.0 }}
             >
               <p className="text-subtext">
-                Specialized in EV Charging Management Systems at{" "}
+                Developing enterprise solutions at{" "}
                 <motion.a
                   href="#"
                   className="text-accent font-semibold hover:text-accent2 transition-colors duration-300 underline decoration-accent/50 hover:decoration-accent2/50"
@@ -231,9 +231,9 @@ export default function About() {
                 whileInView={{ scale: 1 }}
                 transition={{ duration: 0.5, delay: 0.9, type: "spring" }}
               >
-                3.5+
+                6+
               </motion.div>
-              <p className="text-subtext">Years Frontend Development</p>
+              <p className="text-subtext">Enterprise Projects Delivered</p>
             </div>
             <div className="text-center p-6">
               <motion.div
@@ -242,9 +242,9 @@ export default function About() {
                 whileInView={{ scale: 1 }}
                 transition={{ duration: 0.5, delay: 1.0, type: "spring" }}
               >
-                2.5+
+                3.5+
               </motion.div>
-              <p className="text-subtext">Years Network Engineering</p>
+              <p className="text-subtext">Years Frontend Development</p>
             </div>
           </motion.div>
 

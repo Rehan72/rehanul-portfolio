@@ -4,19 +4,22 @@ import { motion } from "framer-motion";
 import AnimatedProgressBar from "./AnimatedProgressBar.jsx";
 import AnimatedCounter from "./AnimatedCounter.jsx";
 
-const core = ["React", "TypeScript", "JavaScript", "HTML5", "CSS3", "Tailwind CSS"];
-const tooling = ["Vite", "Webpack", "ESLint", "Jest", "Testing Library"];
-const networking = ["REST", "WebSockets", "Caching", "CDN", "TCP/IP Basics", "DNS", "Latency & QoS"];
+const core = ["React 18", "Angular 13", "TypeScript", "JavaScript", "HTML5", "CSS3"];
+const frameworks = ["Redux Toolkit", "React Hook Form", "Angular Material", "Material-UI", "Tailwind CSS", "Bootstrap"];
+const tools = ["Vite", "Webpack", "Docker", "Nginx", "GitLab CI/CD", "SonarQube"];
+const apis = ["REST API", "JWT", "Axios", "WebSockets", "Google Maps API"];
+const testing = ["Jest", "React Testing Library", "Karma", "Jasmine"];
+const other = ["ECharts", "Leaflet Maps", "jsPDF", "ExcelJS", "Framer Motion", "SCSS/SASS"];
 
 const skillLevels = [
-  { name: "React", level: 95 },
+  { name: "React.js", level: 95 },
+  { name: "Angular", level: 85 },
   { name: "TypeScript", level: 90 },
-  { name: "JavaScript", level: 92 },
-  { name: "CSS/Tailwind", level: 88 },
-  { name: "Performance Optimization", level: 85 },
+  { name: "Redux/Redux-Saga", level: 92 },
+  { name: "Material-UI/MUI", level: 90 },
   { name: "API Integration", level: 90 },
-  { name: "Network Protocols", level: 80 },
-  { name: "Testing", level: 75 }
+  { name: "Docker & CI/CD", level: 80 },
+  { name: "Testing (Jest)", level: 75 }
 ];
 
 const Pill = memo(({ text, i }) => {
@@ -44,7 +47,7 @@ export default memo(function Skills() {
         transition={{ duration: 0.6 }}
       >
         <h2 className="text-3xl md:text-4xl font-bold bg-gradient-to-r from-accent to-accent2 bg-clip-text text-transparent">Skills & Tech</h2>
-        <p className="mt-3 text-subtext text-lg">Expertise across frontend development and network systems</p>
+        <p className="mt-3 text-subtext text-lg">Expertise across frontend development and enterprise applications</p>
         <motion.div
           className="w-24 h-1 bg-gradient-to-r from-accent to-accent2 rounded-full mt-4"
           initial={{ width: 0 }}
@@ -111,27 +114,27 @@ export default memo(function Skills() {
               whileHover={{ scale: 1.05, y: -2 }}
             >
               <div className="text-4xl font-bold text-accent mb-3">
-                <AnimatedCounter endValue={3.5} suffix="+" />
+                <AnimatedCounter endValue={6} suffix="+" />
               </div>
-              <div className="text-sm text-subtext font-medium">Years Frontend</div>
+              <div className="text-sm text-subtext font-medium">Enterprise Projects</div>
             </motion.div>
             <motion.div
               className="text-center p-4 rounded-lg bg-accent2/5 border border-accent2/20 hover:bg-accent2/10 transition-all duration-300"
               whileHover={{ scale: 1.05, y: -2 }}
             >
               <div className="text-4xl font-bold text-accent2 mb-3">
-                <AnimatedCounter endValue={2.5} suffix="+" />
+                <AnimatedCounter endValue={3.5} suffix="+" />
               </div>
-              <div className="text-sm text-subtext font-medium">Years Network</div>
+              <div className="text-sm text-subtext font-medium">Years Frontend</div>
             </motion.div>
             <motion.div
               className="text-center p-4 rounded-lg bg-green-500/5 border border-green-500/20 hover:bg-green-500/10 transition-all duration-300"
               whileHover={{ scale: 1.05, y: -2 }}
             >
               <div className="text-4xl font-bold text-green-500 mb-3">
-                <AnimatedCounter endValue={15} suffix="+" />
+                <AnimatedCounter endValue={20} suffix="+" />
               </div>
-              <div className="text-sm text-subtext font-medium">Projects</div>
+              <div className="text-sm text-subtext font-medium">Tech Skills</div>
             </motion.div>
             <motion.div
               className="text-center p-4 rounded-lg bg-purple-500/5 border border-purple-500/20 hover:bg-purple-500/10 transition-all duration-300"
@@ -140,7 +143,7 @@ export default memo(function Skills() {
               <div className="text-4xl font-bold text-purple-500 mb-3">
                 <AnimatedCounter endValue={99} suffix="%" />
               </div>
-              <div className="text-sm text-subtext font-medium">Uptime Focus</div>
+              <div className="text-sm text-subtext font-medium">Project Success</div>
             </motion.div>
           </div>
         </motion.div>
@@ -182,12 +185,12 @@ export default memo(function Skills() {
               whileHover={{ rotate: 360 }}
               transition={{ duration: 0.6 }}
             >
-              <span className="text-white text-sm">🛠️</span>
+              <span className="text-white text-sm">🎨</span>
             </motion.div>
-            Tooling
+            Frameworks & UI
           </h3>
           <div className="flex flex-wrap gap-3">
-            {tooling.map((s, i) => <Pill key={s} text={s} i={i} />)}
+            {frameworks.map((s, i) => <Pill key={s} text={s} i={i} />)}
           </div>
         </motion.div>
         <motion.div
@@ -200,12 +203,66 @@ export default memo(function Skills() {
               whileHover={{ rotate: 360 }}
               transition={{ duration: 0.6 }}
             >
-              <span className="text-white text-sm">🌐</span>
+              <span className="text-white text-sm">🛠️</span>
             </motion.div>
-            Networking & Systems
+            DevOps & Tools
           </h3>
           <div className="flex flex-wrap gap-3">
-            {networking.map((s, i) => <Pill key={s} text={s} i={i} />)}
+            {tools.map((s, i) => <Pill key={s} text={s} i={i} />)}
+          </div>
+        </motion.div>
+        <motion.div
+          className="card p-8 bg-gradient-to-br from-card to-card/80 border border-white/10 hover:border-purple-500/20 transition-all duration-300 group"
+          whileHover={{ scale: 1.02, y: -5 }}
+        >
+          <h3 className="text-lg font-bold mb-6 flex items-center gap-3">
+            <motion.div
+              className="w-8 h-8 bg-gradient-to-br from-purple-500 to-accent2 rounded-lg flex items-center justify-center"
+              whileHover={{ rotate: 360 }}
+              transition={{ duration: 0.6 }}
+            >
+              <span className="text-white text-sm">🔌</span>
+            </motion.div>
+            APIs & Integration
+          </h3>
+          <div className="flex flex-wrap gap-3">
+            {apis.map((s, i) => <Pill key={s} text={s} i={i} />)}
+          </div>
+        </motion.div>
+        <motion.div
+          className="card p-8 bg-gradient-to-br from-card to-card/80 border border-white/10 hover:border-yellow-500/20 transition-all duration-300 group"
+          whileHover={{ scale: 1.02, y: -5 }}
+        >
+          <h3 className="text-lg font-bold mb-6 flex items-center gap-3">
+            <motion.div
+              className="w-8 h-8 bg-gradient-to-br from-yellow-500 to-accent rounded-lg flex items-center justify-center"
+              whileHover={{ rotate: 360 }}
+              transition={{ duration: 0.6 }}
+            >
+              <span className="text-white text-sm">🧪</span>
+            </motion.div>
+            Testing
+          </h3>
+          <div className="flex flex-wrap gap-3">
+            {testing.map((s, i) => <Pill key={s} text={s} i={i} />)}
+          </div>
+        </motion.div>
+        <motion.div
+          className="card p-8 bg-gradient-to-br from-card to-card/80 border border-white/10 hover:border-cyan-500/20 transition-all duration-300 group sm:col-span-2 lg:col-span-1"
+          whileHover={{ scale: 1.02, y: -5 }}
+        >
+          <h3 className="text-lg font-bold mb-6 flex items-center gap-3">
+            <motion.div
+              className="w-8 h-8 bg-gradient-to-br from-cyan-500 to-accent rounded-lg flex items-center justify-center"
+              whileHover={{ rotate: 360 }}
+              transition={{ duration: 0.6 }}
+            >
+              <span className="text-white text-sm">📊</span>
+            </motion.div>
+            Visualization & More
+          </h3>
+          <div className="flex flex-wrap gap-3">
+            {other.map((s, i) => <Pill key={s} text={s} i={i} />)}
           </div>
         </motion.div>
       </motion.div>

@@ -204,18 +204,12 @@ const TimelineItem = memo(({ item, index, isExpanded, onToggle }) => {
                 <div className="space-y-3">
                   <h4 className="text-sm font-semibold text-foreground">Key Achievements:</h4>
                   <ul className="text-sm text-subtext space-y-1">
-                    <li className="flex items-start gap-2">
-                      <span className="text-accent mt-1">•</span>
-                      <span>Delivered high-performance solutions with optimized code</span>
-                    </li>
-                    <li className="flex items-start gap-2">
-                      <span className="text-accent mt-1">•</span>
-                      <span>Collaborated with cross-functional teams</span>
-                    </li>
-                    <li className="flex items-start gap-2">
-                      <span className="text-accent mt-1">•</span>
-                      <span>Implemented best practices and modern technologies</span>
-                    </li>
+                    {item.achievements && item.achievements.map((achievement, i) => (
+                      <li key={i} className="flex items-start gap-2">
+                        <span className="text-accent mt-1">•</span>
+                        <span>{achievement}</span>
+                      </li>
+                    ))}
                   </ul>
                 </div>
               </motion.div>
@@ -228,23 +222,24 @@ const TimelineItem = memo(({ item, index, isExpanded, onToggle }) => {
 });
 
 export default memo(function Timeline() {
-  const [expandedItems, setExpandedItems] = useState(new Set());
+  const [expandedItems, setExpandedItems] = useState(new Set()); // All collapsed by default
   const [viewMode, setViewMode] = useState('timeline'); // 'timeline' or 'cards'
   const { prefersReducedMotion } = useAccessibility();
 
   const toggleItem = (index) => {
-    const newExpanded = new Set(expandedItems);
-    if (newExpanded.has(index)) {
-      newExpanded.delete(index);
+    // Only allow one card to be expanded at a time
+    if (expandedItems.has(index)) {
+      setExpandedItems(new Set());
     } else {
-      newExpanded.add(index);
+      setExpandedItems(new Set([index]));
     }
-    setExpandedItems(newExpanded);
   };
 
   const toggleViewMode = () => {
     const newMode = viewMode === 'timeline' ? 'cards' : 'timeline';
     setViewMode(newMode);
+    // Collapse all items when switching views
+    setExpandedItems(new Set());
   };
 
   return (
@@ -428,18 +423,12 @@ export default memo(function Timeline() {
                         >
                           <h4 className="text-sm font-semibold text-foreground mb-2">Key Achievements:</h4>
                           <ul className="text-sm text-subtext space-y-1">
-                            <li className="flex items-start gap-2">
-                              <span className="text-accent mt-1">•</span>
-                              <span>Delivered high-performance solutions with optimized code</span>
-                            </li>
-                            <li className="flex items-start gap-2">
-                              <span className="text-accent mt-1">•</span>
-                              <span>Collaborated with cross-functional teams</span>
-                            </li>
-                            <li className="flex items-start gap-2">
-                              <span className="text-accent mt-1">•</span>
-                              <span>Implemented best practices and modern technologies</span>
-                            </li>
+                            {item.achievements && item.achievements.map((achievement, i) => (
+                              <li key={i} className="flex items-start gap-2">
+                                <span className="text-accent mt-1">•</span>
+                                <span>{achievement}</span>
+                              </li>
+                            ))}
                           </ul>
                         </motion.div>
                       )}

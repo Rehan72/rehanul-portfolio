@@ -1,0 +1,190 @@
+================================================================================
+PROJECT: LevelUp - EV Charging Platform
+================================================================================
+
+PROJECT OVERVIEW
+----------------
+LevelUp is a comprehensive web-based platform for Electric Vehicle (EV) charging 
+network management. It's built as a multi-tenant SaaS solution supporting multiple 
+brands (LevelUp, Sparke, Fleete, Roame, Flexe) under one unified system. The 
+platform enables EV roaming between different charging networks and service providers.
+
+
+TECH STACK
+----------
+Frontend:        React 18.2.0
+UI Library:      Material-UI (MUI) v5.15
+Routing:         React Router DOM v6
+State Mgmt:      Redux Toolkit, React-Redux, Redux Persist
+Forms:           React Hook Form
+HTTP Client:     Axios
+Charts:          ECharts
+Date Handling:   Day.js, Moment.js
+Rich Text Ed:    CKEditor
+Testing:         Jest, React Testing Library
+Styling:         SCSS, Styled Components
+Container:       Docker
+Web Server:      Nginx
+CI/CD:           GitLab CI
+Code Quality:    SonarQube
+
+
+KEY FEATURES IMPLEMENTED
+-------------------------
+1. AUTHENTICATION & SECURITY
+   - JWT-based authentication with token refresh
+   - Password encryption (AES)
+   - Role-based access control (RBAC)
+   - Multi-role support: System Admin, Platform Admin, Non-System User
+   - Password reset & forgot password flows
+   - Session management
+
+2. DASHBOARD & ANALYTICS
+   - Role-specific dashboards
+   - Platform-wide statistics
+   - Manager-level analytics
+   - Data visualization with charts (Donut charts)
+   - Real-time data filtering
+
+3. COMPANY MANAGEMENT
+   - Company profile setup and management
+   - Multiple brand support (multi-tenant architecture)
+   - Company profile viewing
+
+4. USER MANAGEMENT
+   - Add/Edit/Delete users
+   - User roles assignment
+   - User status management (Active/Inactive)
+
+5. SYSTEM CONFIGURATION
+   - Payment gateway configuration (Razorpay integration)
+   - Invoice template management
+   - FAQ management
+   - Notification settings
+   - Communication setup
+
+6. POLICY MANAGEMENT
+   - Privacy Policy
+   - Terms & Conditions
+   - Refund Policy
+   - FAQ system
+
+7. ADDITIONAL FEATURES
+   - Image gallery/slider
+   - Multi-select dropdowns
+   - Data tables with pagination
+   - File upload handling
+   - Toast notifications
+   - Loading overlays
+   - Error boundaries
+   - Responsive design
+
+
+PROJECT STRUCTURE
+-----------------
+src/
+├── components/         # Reusable UI components
+│   ├── layout/         # Header, Footer, Layout
+│   ├── Charts/         # Chart components
+│   ├── table/          # Table components
+│   └── form-components/ # Reusable form fields
+├── pages/              # Page components
+│   ├── authentication/  # Login, Signup, Password reset
+│   ├── dashboard/      # Dashboard views
+│   └── systemSetup/    # Configuration pages
+├── services/           # API service layer
+│   ├── AuthService.js
+│   ├── UserService.js
+│   ├── CompanyProfileService.js
+│   └── DashboardService.js
+├── shared/             # Shared utilities
+├── reduxSlice/         # Redux slices
+├── config/             # Configuration files
+├── context/            # React Context
+└── __tests__/          # Test files
+
+
+HOW TO DOWNLOAD/CLONE
+---------------------
+# Clone the repository (if hosted on GitLab/GitHub)
+git clone <repository-url>
+
+# Navigate to project directory
+cd portal-ui
+
+# Install dependencies
+npm install
+
+# Run in development mode
+npm start
+
+# Run tests
+npm test
+
+# Build for production
+npm run build
+
+
+INTERVIEW TALKING POINTS
+------------------------
+1. ARCHITECTURE & DESIGN PATTERNS
+   - Multi-tenant SaaS architecture
+   - Role-based access control implementation
+   - JWT authentication flow with refresh tokens
+   - Protected routes with token validation
+
+2. STATE MANAGEMENT
+   - Redux Toolkit for global state
+   - Redux Persist for state persistence
+   - Context API for theme/global state
+   - Local storage service for token management
+
+3. PERFORMANCE OPTIMIZATIONS
+   - Code splitting
+   - Error boundaries for graceful error handling
+   - Lazy loading considerations
+   - Optimized re-renders with React.memo
+
+4. SECURITY IMPLEMENTATION
+   - AES encryption for sensitive data
+   - Token-based authentication
+   - HTTP-only concepts
+   - API interceptors for auth headers
+
+5. TESTING STRATEGY
+   - Unit tests with Jest
+   - Component testing with React Testing Library
+   - Service layer mocking
+   - Code coverage considerations
+
+6. DEVOPS & CI/CD
+   - Docker multi-stage builds
+   - Nginx configuration for production
+   - Environment-specific configurations
+   - GitLab CI pipeline setup
+
+
+FOR PORTFOLIO WEBSITE
+----------------------
+Project Title: LevelUp - EV Charging Management Platform
+
+Description: A comprehensive multi-tenant SaaS platform for managing Electric 
+Vehicle charging networks, supporting multiple brands with role-based access 
+control, real-time analytics, and seamless payment integration.
+
+Technologies: React, Redux, Material-UI, Node.js, Docker, Nginx
+
+Key Achievements:
+- Implemented JWT authentication with refresh token mechanism
+- Built role-based dashboards for different user types
+- Developed multi-tenant architecture supporting 5+ brands
+- Integrated payment gateway (Razorpay)
+- Achieved comprehensive test coverage with Jest
+- Deployed via Docker containers with Nginx
+
+Live Demo: https://dev-levelup-portal.demoapplication.net
+API Service: https://dev-levelup-service.demoapplication.net
+
+
+================================================================================
+

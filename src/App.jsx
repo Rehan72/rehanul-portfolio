@@ -12,7 +12,7 @@ const Skills = lazy(() => import("./components/Skills.jsx"));
 const Experience = lazy(() => import("./components/Experience.jsx"));
 const Timeline = lazy(() => import("./components/Timeline.jsx"));
 const Projects = lazy(() => import("./components/Projects.jsx"));
-const Testimonials = lazy(() => import("./components/Testimonials.jsx"));
+// const Testimonials = lazy(() => import("./components/Testimonials.jsx"));
 const Contact = lazy(() => import("./components/Contact.jsx"));
 const WhatsAppChat = lazy(() => import("./components/WhatsAppChat.jsx"));
 const PageTransition = lazy(() => import("./components/PageTransition.jsx"));
@@ -44,17 +44,14 @@ export default function App() {
               <StatsCounter />
             </Suspense>
             <Suspense fallback={<div className="section-placeholder" />}>
-              <Experience />
-            </Suspense>
-            <Suspense fallback={<div className="section-placeholder" />}>
               <Timeline />
             </Suspense>
             <Suspense fallback={<div className="section-placeholder" />}>
               <Projects />
             </Suspense>
-            <Suspense fallback={<div className="section-placeholder" />}>
+            {/* <Suspense fallback={<div className="section-placeholder" />}>
               <Testimonials />
-            </Suspense>
+            </Suspense> */}
             <Suspense fallback={<div className="section-placeholder" />}>
               <Contact />
             </Suspense>

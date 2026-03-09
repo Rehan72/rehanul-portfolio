@@ -1,0 +1,222 @@
+# Project Details: AssetWorks Portal (EV Charging Management System)
+
+## Project Overview
+**AssetWorks** is a comprehensive **Enterprise EV (Electric Vehicle) Charging Management Portal** - a multi-role web application for managing electric vehicle charging infrastructure. The platform provides role-based access for Super Admins, Admins, and Operators to manage charging stations, locations, assets, users, subscriptions, and billing.
+
+---
+
+## 🚀 Tech Stack
+
+### Frontend Framework & Languages
+| Technology | Version | Purpose |
+|------------|---------|---------|
+| **Angular** | ~13.3.0 | Frontend framework |
+| **TypeScript** | ~4.6.2 | Type-safe JavaScript June 2022 – Feb 2023|
+| **SCSS** | ^1.53.0 | CSS preprocessor |
+
+### UI Libraries & Components
+| Library | Version | Purpose |
+|---------|---------|---------|
+| **Angular Material** | ^13.3.9 | UI component library |
+| **@angular/cdk** | ^13.3.9 | Component Dev Kit |
+| **Material Icons** | ^1.13.14 | Icon library |
+| **ngx-toastr** | ^13.2.1 | Toast notifications |
+
+### Data Visualization
+| Library | Version | Purpose |
+|---------|---------|---------|
+| **ECharts** | ^5.3.3 | Advanced charting library |
+| **ngx-echarts** | ^8.0.1 | Angular ECharts wrapper |
+
+### Maps & Location
+| Library | Version | Purpose |
+|---------|---------|---------|
+| **Google Maps** | API | Interactive maps |
+| **@google/maps** | ^1.1.3 | Google Maps API wrapper |
+| **ngx-google-places-autocomplete** | ^2.0.5 | Address autocomplete |
+
+### Authentication & Security
+| Library | Version | Purpose |
+|---------|---------|---------|
+| **JWT Decode** | ^3.1.2 | Token parsing |
+| **Crypto-JS** | ^4.1.1 | Encryption/decryption |
+| **ngx-cookie-service** | ^13.2.1 | Cookie management |
+
+### PDF & Export
+| Library | Version | Purpose |
+|---------|---------|---------|
+| **jspdf** | ^2.5.1 | PDF generation |
+| **jspdf-autotable** | ^3.5.25 | PDF tables |
+| **file-saver** | ^2.0.5 | File download |
+| **mat-table-exporter** | ^10.2.4 | Table data export |
+
+### Other Libraries
+| Library | Version | Purpose |
+|---------|---------|---------|
+| **RxJS** | ~7.5.0 | Reactive programming |
+| **SweetAlert2** | ^11.4.19 | Beautiful alerts |
+| **ngx-print** | ^1.2.1 | Print functionality |
+| **@angular-builders/custom-webpack** | ^13.0.0 | Custom webpack builds |
+
+### Development Tools
+| Tool | Version | Purpose |
+|------|---------|---------|
+| **Angular CLI** | ^15.0.3 | Development framework |
+| **Karma** | ~6.3.0 | Test runner |
+| **Jasmine** | ~4.0.0 | Testing framework |
+| **Sonar Scanner** | ^3.1.0 | Code quality |
+
+---
+
+## 📱 Application Modules & Features
+
+### 1. Authentication Module
+- **Login** with role-based redirect
+- **Forgot Password** functionality
+- **Change Password**
+- **OTP Verification**
+- **JWT Token Interceptor** for API security
+- **Role-based Route Guards**
+
+### 2. Dashboard Module (Admin/Operator)
+- **Area Chart** - Revenue/trend visualization
+- **Bar Chart** - Comparative data
+- **Line Chart** - Time-series data
+- **Stacked Area Chart** - Multi-series trends
+- **Meter Chart** - Gauge/progress indicators
+- **Status Boxes** - Quick stats (Energy, Points, Graph, Elements)
+- **Data Tables** with sorting, filtering, export
+- **Transaction Dialogs** - Transaction details
+
+### 3. Admin Module Features
+- **Customer Management** - Add/Edit customers
+- **Location Management** - Manage charging locations
+- **Charger Management** - EV charger administration
+- **Asset Management** - Hardware assets tracking
+- **Pricing Management** - Rate configuration
+- **Subscription Plans** - User subscription handling
+- **Admin Users** - System administrators
+- **Operator Users** - Field operators
+- **Reports** - Analytics and reporting
+- **Diagnostics** - System health checks
+- **Help Section** - User documentation
+
+### 4. Super Admin Module
+- **Client Billing** - Billing management for clients
+- **Manage Admin Users** - Super admin user control
+- **Billing Lists** - Invoice management
+
+### 5. Common Features
+- **Master Layout** with navigation
+- **Common Diagnostics** - Cross-module diagnostics
+- **Interactive Maps** with marker clustering
+
+---
+
+## 🏗️ Architecture & Best Practices
+
+### Project Structure
+```
+src/
+├── app/
+│   ├── component/          # Reusable components
+│   ├── screen/             # Feature modules
+│   │   ├── admin/          # Admin module
+│   │   ├── super-admin/    # Super admin module
+│   │   ├── operator/       # Operator module
+│   │   └── login/          # Authentication
+│   ├── service/            # Business logic services
+│   ├── gurads/             # Route guards
+│   └── shared/             # Shared modules
+├── environments/           # Environment configs
+└── assets/                 # Static assets
+```
+
+### Key Architectural Features
+- **Lazy Loading** - Modules loaded on demand
+- **Route Guards** - Role-based access control
+- **HTTP Interceptors** - Token management
+- **Modular Design** - Feature-based organization
+- **Strict TypeScript** - Type safety enabled
+- **Responsive Design** - SCSS styling
+
+---
+
+## 💼 Resume Description (Short Version)
+
+> **AssetWorks - EV Charging Management Portal**
+> - Built a comprehensive multi-role web application for managing EV charging infrastructure using Angular 13, TypeScript, and SCSS
+> - Implemented role-based authentication (Super Admin, Admin, Operator) with JWT tokens and route guards
+> - Created interactive dashboards with ECharts (Area, Bar, Line, Stacked, Meter charts)
+> - Developed CRUD operations for Locations, Chargers, Assets, Users, Customers, Subscriptions, and Pricing
+> - Integrated Google Maps with marker clustering for location visualization
+> - Added PDF generation and data export capabilities using jsPDF and mat-table-exporter
+> - Implemented responsive UI using Angular Material components and custom SCSS
+> - Used RxJS for reactive programming and HTTP interceptors for API security
+
+---
+
+## 🎯 Key Interview Talking Points
+
+1. **Angular Expertise**: Explain your experience with Angular 13, components, modules, services, and lazy loading
+2. **State Management**: Discuss how you manage data flow using RxJS Observables
+3. **Authentication Flow**: Explain JWT token handling, interceptors, and route guards
+4. **Data Visualization**: Describe your experience with ECharts integration
+5. **Maps Integration**: Talk about Google Maps API and marker clustering
+6. **UI/UX**: Mention Angular Material, responsive design, and custom SCSS styling
+7. **PDF & Export**: Explain jsPDF and data export implementations
+8. **Code Quality**: Mention SonarQube integration and testing practices
+9. **API Integration**: Discuss HTTP client, error handling, and interceptors
+10. **Project Structure**: Explain modular architecture and best practices
+
+---
+
+## 📋 Quick Reference - All Dependencies
+
+```json
+{
+  "dependencies": {
+    "@angular-builders/custom-webpack": "^13.0.0",
+    "@angular-material-components/datetime-picker": "^7.0.1",
+    "@angular/animations": "~13.3.0",
+    "@angular/cdk": "^13.3.9",
+    "@angular/common": "~13.3.0",
+    "@angular/compiler": "~13.3.0",
+    "@angular/core": "^13.3.7",
+    "@angular/forms": "~13.3.0",
+    "@angular/material": "^13.3.9",
+    "@angular/platform-browser": "~13.3.0",
+    "@angular/platform-browser-dynamic": "~13.3.0",
+    "@angular/router": "~13.3.0",
+    "@google/maps": "^1.1.3",
+    "@material/grid-list": "^4.0.0",
+    "@types/crypto-js": "^4.1.1",
+    "@types/googlemaps": "^3.43.3",
+    "crypto-js": "^4.1.1",
+    "echarts": "^5.3.3",
+    "file-saver": "^2.0.5",
+    "jscsv": "^1.1.4",
+    "jspdf": "^2.5.1",
+    "jspdf-autotable": "^3.5.25",
+    "jwt-decode": "^3.1.2",
+    "mat-table-exporter": "^10.2.4",
+    "material-icons": "^1.13.14",
+    "ngx-cookie-service": "^13.2.1",
+    "ngx-echarts": "^8.0.1",
+    "ngx-google-places-autocomplete": "^2.0.5",
+    "ngx-print": "^1.2.1",
+    "ngx-toastr": "^13.2.1",
+    "rxjs": "~7.5.0",
+    "sonar-scanner": "^3.1.0",
+    "sweetalert2": "^11.4.19",
+    "tslib": "^2.3.0",
+    "webpack": "^5.75.0",
+    "zone.js": "~0.11.4"
+  }
+}
+```
+
+---
+
+*Generated for Resume & Portfolio Use*
+
